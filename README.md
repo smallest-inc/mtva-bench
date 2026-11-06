@@ -18,11 +18,12 @@ call with it, from greeting to hang-up, and a judge reads the call to score how 
 
 **600 calls · 100 agents · 29 industries · 10 languages · inbound and outbound**
 
-<!-- mtva:highlights -->
-- **Fastest to respond:** 305 ms median time to first token, 2.5× sooner than the next fastest model, Claude Haiku 5.5 (773 ms).
-- **Sounds the most human:** a blind judge preferred it over all 6 models it faced, in 63% to 99% of calls, including Claude Opus 5.5, the judge itself.
-- **Quality at speed:** an MTVA Score of 78.6; every model that scores higher takes at least 4.1× as long to start speaking.
-<!-- /mtva:highlights -->
+## Quality against speed
+
+A voice agent has to be good and fast. On a call, a long pause before the agent answers is the
+first thing a caller notices. The chart places every model by its MTVA Score and by how quickly
+it starts to reply. The line is the Pareto frontier: the models that no other model beats on
+both.
 
 ![Quality against speed](assets/score-vs-latency.svg)
 

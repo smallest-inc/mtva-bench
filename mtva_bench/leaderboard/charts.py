@@ -249,18 +249,7 @@ def judge_label(model: str, entries: Sequence[Entry]) -> str:
     return next((e.label for e in entries if e.summary.run == model), model)
 
 
-# --- shared claims --------------------------------------------------------------------------
-
-
-def slower_higher(entries: Sequence[Entry], focus: Entry) -> float | None:
-    """How many times slower to first token the fastest model that scores higher is, when the
-    focus model is the fastest of them all; None otherwise."""
-    if min(e.latency.ttft_warm_p50 for e in entries) != focus.latency.ttft_warm_p50:
-        return None
-    higher = [e for e in entries if e.scores.mtva_score.value > focus.scores.mtva_score.value]
-    if not higher:
-        return None
-    return min(e.latency.ttft_warm_p50 for e in higher) / focus.latency.ttft_warm_p50
+# --- arena wins -----------------------------------------------------------------------------
 
 
 def preferred(pairs: Sequence[ArenaSummary]) -> list[ArenaSummary]:
