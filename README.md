@@ -16,7 +16,7 @@ production puts it: a long system prompt full of business rules, real tools to l
 and act, and a caller with their own goal, facts and patience. A simulated caller holds a whole
 call with it, from greeting to hang-up, and a judge reads the call to score how the agent did.
 
-**600 calls · 100 agents · 29 industries · 10 languages, 7 of them Indian · inbound and outbound**
+**600 calls · 100 agents · 29 industries · 10 languages · inbound and outbound**
 
 <!-- mtva:highlights -->
 - **Fastest to respond:** 305 ms median time to first token, 2.5× sooner than the next fastest model, Claude Haiku 5.5 (773 ms).
@@ -90,8 +90,8 @@ and details that contradict the tools or the caller are all counted here.
 ## Sounds human
 
 A caller judges an agent first by how it sounds. In a blind head-to-head, a judge reads the same
-scenario handled by two models, shown only as what each agent said aloud: no system prompt, no
-tools, no model names. It picks the agent a caller would more readily take for a skilled person.
+scenario handled by two models, shown only as what each agent said aloud: no system prompt, tools
+or model names. It picks the agent a caller would more readily take for a skilled person.
 Each model's call is shown first in half of the scenarios, so a lean toward either position
 cancels out. This comparison sits outside the MTVA Score.
 
@@ -144,11 +144,10 @@ to 250 ms sooner from there, and Electron is served from India.
 
 ## The test set stays private
 
-Benchmarks that publish their test set end up in training data. The MTVA-Bench data is held
-privately so its scores stay meaningful for future models. Everything that decides a score is
-public: the caller's prompt, the judge's prompts, the scoring code and every published result.
-Each result records the hashes of the data, caller, judge and prompts it was made with, and
-`benchmark.yaml` pins the data's SHA-256.
+The MTVA-Bench data is held privately so its scores stay meaningful for future models.
+Everything that decides a score is public: the caller's prompt, the judge's prompts, the scoring
+code and every published result. Each result records the hashes of the data, caller, judge and
+prompts it was made with, and `benchmark.yaml` pins the data's SHA-256.
 
 ## Running it
 
