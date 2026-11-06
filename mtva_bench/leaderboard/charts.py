@@ -114,10 +114,6 @@ def lead(entries: Sequence[Entry]) -> Entry | None:
     return next((entry for entry in entries if highlighted(entry)), None)
 
 
-def times(ratio: float) -> str:
-    return f"{ratio:.1f}×"  # noqa: RUF001
-
-
 class Card:
     """One chart: a kicker, a headline, a subtitle, the body the caller draws, then a method
     note and the wordmark. `y` is where the body may start."""
@@ -378,16 +374,9 @@ def crowding(point: tuple[float, float], others: list[tuple[float, float]]) -> i
 
 
 def score_vs_latency(entries: Sequence[Entry]) -> str:
-    focus = lead(entries)
-    ratio = slower_higher(entries, focus) if focus else None
-    title = (
-        f"{focus.label} starts speaking {times(ratio)} sooner than any model that scores higher"
-        if focus and ratio
-        else "Quality against speed"
-    )
     card = Card(
-        "MTVA-Bench · quality against speed",
-        title,
+        f"MTVA-Bench · {len(entries)} models",
+        "Quality against speed",
         "MTVA Score against median time to first token. Up and to the left is better.",
         "Each model's MTVA Score against its warm time to first token, with the Pareto frontier.",
     )
@@ -763,8 +752,8 @@ def sounds_human(entries: Sequence[Entry], pairs: Sequence[ArenaSummary]) -> str
     judge_model = mine[0].provenance.judge_model
     judge = judge_label(judge_model, entries)
     method = (
-        f"Judge: {judge}, reading only what each agent said aloud, with no system prompt, no "
-        f"tools and no model names. {focus.label}'s call was shown first in half of the scenarios "
+        f"Judge: {judge}, reading only what each agent said aloud, with no system prompt, "
+        f"tools or model names. {focus.label}'s call was shown first in half of the scenarios "
         "against each model. Lines after each share are its 95% interval, bootstrapped by agent."
     )
     if any(p.b.run == judge_model for p in won):
