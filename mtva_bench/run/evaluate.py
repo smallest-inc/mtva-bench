@@ -142,7 +142,7 @@ async def evaluate_stage(
 ) -> EvaluateResult:
     if config.benchmark.judge.repeats != 1:
         raise ValueError("judge repeats above 1 are not supported yet")
-    if config.options.batch and batch_api is None:
+    if config.options.batch and batch_api is None and not config.options.dry_run:
         raise ValueError("batch judging needs a batch api")
     store = RunStore(config.run_dir)
     shared = judge_inputs(config.benchmark)

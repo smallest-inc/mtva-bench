@@ -1,6 +1,8 @@
 import asyncio
 import json
 import os
+from collections.abc import AsyncIterator
+from contextlib import AsyncExitStack, asynccontextmanager
 from pathlib import Path
 
 import click
@@ -30,9 +32,11 @@ from mtva_bench.leaderboard.build import (
 from mtva_bench.leaderboard.charts import charts
 from mtva_bench.leaderboard.readme import ReadmeError, fill, readme_parts
 from mtva_bench.llm.batch import Batcher
-from mtva_bench.llm.client import LLMClient
+from mtva_bench.llm.client import LLM, LLMClient
+from mtva_bench.llm.endpoints import Endpoint
+from mtva_bench.llm.fake import FakeLLM
 from mtva_bench.llm.http import LLMError
-from mtva_bench.llm.types import BatchStatus
+from mtva_bench.llm.types import BatchStatus, Output, Request
 from mtva_bench.report import arena_table, head_to_head_table, runs_table, slice_table, worst_table
 from mtva_bench.run import RunLockedError, StaleRunError, evaluate_stage, simulate_stage
 from mtva_bench.run.arena import (
@@ -84,6 +88,24 @@ def cli() -> None:
       mtva-bench data check                     validate the scenario bundle
       mtva-bench run models/electron-2.0.yaml   run a model; run again to resume
     """
+
+
+def no_model_call(_: Request) -> Output:
+    raise AssertionError("a dry run calls no model")
+
+
+@asynccontextmanager
+async def clients(dry_run: bool, *endpoints: tuple[Endpoint, int]) -> AsyncIterator[list[LLM]]:
+    """A client per (endpoint, concurrency). A dry run calls no model, so it gets stand-ins and
+    needs no API keys."""
+    if dry_run:
+        yield [FakeLLM(no_model_call) for _ in endpoints]
+        return
+    async with AsyncExitStack() as stack:
+        yield [
+            await stack.enter_async_context(LLMClient(endpoint, concurrency))
+            for endpoint, concurrency in endpoints
+        ]
 
 
 def open_bundle(data_dir: Path | None, benchmark_path: Path) -> Bundle:
@@ -398,10 +420,11 @@ def run(
                 failures.append(stored)
 
         async def go():
-            async with (
-                LLMClient(config.model, config.concurrency) as model,
-                LLMClient(config.benchmark.simulation.caller, config.concurrency) as caller,
-            ):
+            async with clients(
+                dry_run,
+                (config.model, config.concurrency),
+                (config.benchmark.simulation.caller, config.concurrency),
+            ) as (model, caller):
                 return await simulate_stage(
                     config,
                     bundle,
@@ -602,16 +625,17 @@ def judge_calls(config: RunConfig, bundle: Bundle, dry_run: bool) -> EvaluateRes
         async def go():
             settings = config.benchmark.judge
             concurrency = config.options.judge_concurrency
-            async with (
-                LLMClient(settings, concurrency) as judge,
-                LLMClient(settings.fallback or settings, concurrency) as fallback,
-            ):
+            async with clients(
+                dry_run, (settings, concurrency), (settings.fallback or settings, concurrency)
+            ) as (judge, fallback):
                 return await evaluate_stage(
                     config,
                     bundle,
                     judge,
                     fallback if settings.fallback else None,
-                    batch_api=Batcher(judge) if config.options.batch else None,
+                    batch_api=Batcher(judge)
+                    if config.options.batch and isinstance(judge, LLMClient)
+                    else None,
                     on_start=lambda total: progress.update(task, total=total),
                     on_batch=waiting,
                     on_done=done,
@@ -810,13 +834,13 @@ def arena(
             progress.update(task, description=f"judge    batch {status.id}: {word} ·")
 
         async def go():
-            async with LLMClient(judge_endpoint, concurrency) as judge:
+            async with clients(dry_run, (judge_endpoint, concurrency)) as (judge,):
                 return await arena_stage(
                     a,
                     b,
                     bundle,
                     judge,
-                    batch_api=Batcher(judge) if batch else None,
+                    batch_api=Batcher(judge) if batch and isinstance(judge, LLMClient) else None,
                     discard_stale=discard_stale,
                     dry_run=dry_run,
                     on_start=lambda total: progress.update(task, total=total),
