@@ -1,0 +1,12 @@
+# A self-hosted model the tests run against; nothing is ever called at this address.
+name: electron
+provider: smallest
+model: electron
+base_url: http://localhost:8000/v1
+params:
+  temperature: 0.7
+  top_p: 0.9
+  top_k: 20
+serving:
+  kind: self-hosted
+  hardware: H200

@@ -1,0 +1,16 @@
+# Electron 2.0 by Smallest AI, served by Smallest's public API.
+name: electron-2.0
+display:
+  label: Electron 2.0
+  organization: Smallest AI
+  reasoning: none
+provider: smallest
+model: electron-2.0
+base_url: https://api.smallest.ai/waves/v1
+concurrency: 8
+params:
+  temperature: 0.7
+  top_p: 0.9
+  top_k: 20
+serving:
+  kind: api

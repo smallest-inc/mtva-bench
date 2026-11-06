@@ -1,0 +1,16 @@
+# Reasoning at low, the lowest effort this model accepts, on the Responses API, which takes
+# reasoning effort together with function tools.
+name: gpt-6.1-sol
+display:
+  label: GPT-6.1 Sol
+  organization: OpenAI
+  reasoning: low
+provider: openai
+model: gpt-6.1-sol
+api: responses
+params:
+  reasoning:
+    effort: low
+unsupported: [seed]
+serving:
+  kind: api

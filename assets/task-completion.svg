@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="923" viewBox="0 0 1200 923" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" role="img">
+<title>Task completion</title>
+<desc>Task completion Did the caller get what they called for? Scored 0 to 100; lines are 95% intervals.</desc>
+<rect x="0.5" y="0.5" width="1199" height="922" rx="18" fill="#fbfbf9" stroke="#ebe9e4"/>
+<circle cx="68" cy="67" r="4.5" fill="#2a78d6"/>
+<text x="80.0" y="72.0" fill="#8a877f" font-size="13" text-anchor="start" font-weight="600" letter-spacing="1.6">MTVA-BENCH · CAPABILITY 1 OF 4</text>
+<text x="64.0" y="124.0" fill="#111111" font-size="36" text-anchor="start" font-weight="700" letter-spacing="-0.9">Task completion</text>
+<text x="64.0" y="160.0" fill="#55534e" font-size="17" text-anchor="start" font-weight="400">Did the caller get what they called for? Scored 0 to 100; lines are 95% intervals.</text>
+<line x1="248.8" y1="206.0" x2="248.8" y2="756.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="248.8" y="778.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400" font-variant-numeric="tabular-nums">0</text>
+<line x1="453.1" y1="206.0" x2="453.1" y2="756.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="453.1" y="778.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400" font-variant-numeric="tabular-nums">25</text>
+<line x1="657.4" y1="206.0" x2="657.4" y2="756.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="657.4" y="778.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400" font-variant-numeric="tabular-nums">50</text>
+<line x1="861.7" y1="206.0" x2="861.7" y2="756.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="861.7" y="778.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400" font-variant-numeric="tabular-nums">75</text>
+<line x1="1066.0" y1="206.0" x2="1066.0" y2="756.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="1066.0" y="778.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400" font-variant-numeric="tabular-nums">100</text>
+<path d="M248.8,220.0 H953.9 Q958.9,220.0 958.9,225.0 V235.0 Q958.9,240.0 953.9,240.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="939.3" y1="230.0" x2="979.4" y2="230.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="235.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">Claude Sonnet 5.5</text>
+<text x="989.4" y="235.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">86.9</text>
+<path d="M248.8,256.0 H947.4 Q952.4,256.0 952.4,261.0 V271.0 Q952.4,276.0 947.4,276.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="932.8" y1="266.0" x2="971.2" y2="266.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="271.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-5.6 Sol</text>
+<text x="981.2" y="271.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">86.1</text>
+<path d="M248.8,292.0 H928.6 Q933.6,292.0 933.6,297.0 V307.0 Q933.6,312.0 928.6,312.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="911.6" y1="302.0" x2="954.0" y2="302.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="307.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-6.1 Sol</text>
+<text x="964.0" y="307.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">83.8</text>
+<path d="M248.8,328.0 H928.6 Q933.6,328.0 933.6,333.0 V343.0 Q933.6,348.0 928.6,348.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="912.4" y1="338.0" x2="955.7" y2="338.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="343.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-6.1 Terra</text>
+<text x="965.7" y="343.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">83.8</text>
+<path d="M248.8,364.0 H926.2 Q931.2,364.0 931.2,369.0 V379.0 Q931.2,384.0 926.2,384.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="910.7" y1="374.0" x2="951.6" y2="374.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="379.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">Claude Fable 5.1</text>
+<text x="961.6" y="379.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">83.5</text>
+<path d="M248.8,400.0 H923.7 Q928.7,400.0 928.7,405.0 V415.0 Q928.7,420.0 923.7,420.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="904.2" y1="410.0" x2="950.0" y2="410.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="415.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">Claude Haiku 5.5</text>
+<text x="960.0" y="415.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">83.2</text>
+<rect x="52.0" y="430.0" width="1096.0" height="32.0" rx="8" fill="#e3edf9"/>
+<path d="M248.8,436.0 H922.1 Q927.1,436.0 927.1,441.0 V451.0 Q927.1,456.0 922.1,456.0 H248.8 Z" fill="#2a78d6"/>
+<line x1="904.2" y1="446.0" x2="951.6" y2="446.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="451.0" fill="#111111" font-size="15" text-anchor="end" font-weight="700">Electron 2.0</text>
+<text x="961.6" y="451.0" fill="#111111" font-size="15" text-anchor="start" font-weight="700" font-variant-numeric="tabular-nums">83.0</text>
+<path d="M248.8,472.0 H912.3 Q917.3,472.0 917.3,477.0 V487.0 Q917.3,492.0 912.3,492.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="894.4" y1="482.0" x2="940.2" y2="482.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="487.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">Claude Opus 5.5</text>
+<text x="950.2" y="487.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">81.8</text>
+<path d="M248.8,508.0 H899.2 Q904.2,508.0 904.2,513.0 V523.0 Q904.2,528.0 899.2,528.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="883.0" y1="518.0" x2="925.4" y2="518.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="523.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-5.6 Terra</text>
+<text x="935.4" y="523.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">80.2</text>
+<path d="M248.8,544.0 H895.9 Q900.9,544.0 900.9,549.0 V559.0 Q900.9,564.0 895.9,564.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="879.7" y1="554.0" x2="921.4" y2="554.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="559.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">Gemini 3.8 Flash</text>
+<text x="931.4" y="559.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">79.8</text>
+<path d="M248.8,580.0 H833.8 Q838.8,580.0 838.8,585.0 V595.0 Q838.8,600.0 833.8,600.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="815.1" y1="590.0" x2="863.3" y2="590.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="595.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-4.1</text>
+<text x="873.3" y="595.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">72.2</text>
+<path d="M248.8,616.0 H833.8 Q838.8,616.0 838.8,621.0 V631.0 Q838.8,636.0 833.8,636.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="811.9" y1="626.0" x2="865.8" y2="626.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="631.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-5.6 Luna</text>
+<text x="875.8" y="631.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">72.2</text>
+<path d="M248.8,652.0 H779.1 Q784.1,652.0 784.1,657.0 V667.0 Q784.1,672.0 779.1,672.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="757.9" y1="662.0" x2="810.2" y2="662.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="667.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-4.1 mini</text>
+<text x="820.2" y="667.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">65.5</text>
+<path d="M248.8,688.0 H701.4 Q706.4,688.0 706.4,693.0 V703.0 Q706.4,708.0 701.4,708.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="684.4" y1="698.0" x2="728.5" y2="698.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="703.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">Gemini 3.5 Flash-Lite</text>
+<text x="738.5" y="703.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">56.0</text>
+<path d="M248.8,724.0 H613.2 Q618.2,724.0 618.2,729.0 V739.0 Q618.2,744.0 613.2,744.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="593.7" y1="734.0" x2="644.3" y2="734.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="739.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-6 Luna</text>
+<text x="654.3" y="739.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">45.2</text>
+<line x1="248.8" y1="206.0" x2="248.8" y2="756.0" stroke="#d3d0c9" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="64.0" y="824.0" text-anchor="start"><tspan fill="#55534e" font-size="13.5" font-weight="700">Method.</tspan><tspan fill="#8a877f" font-size="13.5" font-weight="400" dx="5">The judge reads the whole call and rates its outcome: the caller&#x27;s goal reached, an accepted alternative, partly reached, not reached, or a</tspan></text>
+<text x="64.0" y="845.0" fill="#8a877f" font-size="13.5" text-anchor="start" font-weight="400">wrong result. A goal reached without the caller hearing everything they needed scores one level lower. Each capability is scored 1 to 5 per call from</text>
+<text x="64.0" y="866.0" fill="#8a877f" font-size="13.5" text-anchor="start" font-weight="400">the judge&#x27;s verdicts and mapped to 0 to 100. Intervals are 95%, bootstrapped by agent. Every model runs at its lowest reasoning setting.</text>
+<text x="1136.0" y="866.0" fill="#111111" font-size="16" text-anchor="end" font-weight="700">smallest.ai</text>
+</svg>

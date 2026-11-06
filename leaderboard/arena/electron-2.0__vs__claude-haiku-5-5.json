@@ -1,0 +1,112 @@
+{
+ "a": {
+  "run": "electron-2.0",
+  "label": "Electron 2.0",
+  "organization": "Smallest AI"
+ },
+ "b": {
+  "run": "claude-haiku-5-5",
+  "label": "Claude Haiku 5.5",
+  "organization": "Anthropic"
+ },
+ "benchmark_version": "1.0.0",
+ "coverage": {
+  "planned": 600,
+  "judged": 600,
+  "missing": {}
+ },
+ "scores": {
+  "calls": 600,
+  "wins": {
+   "value": 94.7,
+   "ci": [
+    91.8,
+    97.0
+   ]
+  },
+  "ties": {
+   "value": 0.0,
+   "ci": [
+    0.0,
+    0.0
+   ]
+  },
+  "losses": {
+   "value": 5.3,
+   "ci": [
+    3.0,
+    8.2
+   ]
+  },
+  "by_language": {
+   "Bengali": {
+    "calls": 36,
+    "wins": 94.4,
+    "ties": 0.0,
+    "losses": 5.6
+   },
+   "English": {
+    "calls": 180,
+    "wins": 98.3,
+    "ties": 0.0,
+    "losses": 1.7
+   },
+   "French": {
+    "calls": 42,
+    "wins": 92.9,
+    "ties": 0.0,
+    "losses": 7.1
+   },
+   "Gujarati": {
+    "calls": 42,
+    "wins": 97.6,
+    "ties": 0.0,
+    "losses": 2.4
+   },
+   "Hindi": {
+    "calls": 84,
+    "wins": 92.9,
+    "ties": 0.0,
+    "losses": 7.1
+   },
+   "Kannada": {
+    "calls": 36,
+    "wins": 83.3,
+    "ties": 0.0,
+    "losses": 16.7
+   },
+   "Marathi": {
+    "calls": 42,
+    "wins": 92.9,
+    "ties": 0.0,
+    "losses": 7.1
+   },
+   "Spanish": {
+    "calls": 54,
+    "wins": 96.3,
+    "ties": 0.0,
+    "losses": 3.7
+   },
+   "Tamil": {
+    "calls": 42,
+    "wins": 90.5,
+    "ties": 0.0,
+    "losses": 9.5
+   },
+   "Telugu": {
+    "calls": 42,
+    "wins": 95.2,
+    "ties": 0.0,
+    "losses": 4.8
+   }
+  },
+  "first_shown_won": 50.3
+ },
+ "provenance": {
+  "judge_model": "claude-opus-5-5",
+  "judge_hash": "8c5382e25481eeb7cbae28998cf9e068e6f4b672e7894d90c0a78e7de74aba04",
+  "prompt_hash": "c1ad1db39ab32dc3b7bfc8464da3eeed8ead1e1e0ea2002d3165abbec5f7b0c6",
+  "version": "1",
+  "seed": 0
+ }
+}

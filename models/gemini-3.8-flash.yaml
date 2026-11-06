@@ -1,0 +1,17 @@
+# Reasoning at low, the lowest level this model has: Gemini 3 and later cannot turn thinking off.
+# Gemini needs a user message before the agent speaks. It cannot speak and call a tool in one
+# message, so it says its farewell in the end-call tool's concluding_message.
+name: gemini-3.8-flash
+display:
+  label: Gemini 3.8 Flash
+  organization: Google
+  reasoning: low
+provider: gemini
+model: gemini-3.8-flash
+params:
+  reasoning_effort: low
+unsupported: [seed]
+needs_opening_user_turn: true
+text_with_tool_calls: false
+serving:
+  kind: api

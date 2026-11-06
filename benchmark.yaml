@@ -1,0 +1,56 @@
+# MTVA-Bench: the official protocol. Every run is hashed against this file, and the
+# leaderboard only compares runs with the same hash. Experiments use a separate protocol file.
+version: 1.0.0
+
+data:
+  version: 1.0.0
+  sha256: 114339e4e49673ed271b3083eefd123fa6f4438a21245b7db2a3ca56f1b69868
+  suites: [core]
+  voice_guide: true
+
+simulation:
+  rollouts: 1
+  max_turns: 30
+  max_reply_tokens: 4096
+  seed: 0
+  caller:
+    provider: openai
+    model: gpt-6.1-sol
+    params:
+      reasoning_effort: low
+    timeout_s: 90
+
+judge:
+  provider: anthropic
+  model: claude-opus-5-5
+  params:
+    max_tokens: 32000
+    output_config:
+      effort: medium
+  repeats: 1
+  # Judges a call only when the judge refuses it.
+  fallback:
+    provider: anthropic
+    model: claude-opus-4-8
+    params:
+      max_tokens: 32000
+      thinking:
+        type: adaptive
+      output_config:
+        effort: medium
+
+capabilities:
+  task_completion: 1
+  tool_use: 1
+  instruction_following: 1
+  faithfulness: 1
+
+# Which agent sounds more human, judged blind on what was said aloud. Outside the MTVA Score.
+arena:
+  judge:
+    provider: anthropic
+    model: claude-opus-5-5
+    params:
+      max_tokens: 32000
+      output_config:
+        effort: medium

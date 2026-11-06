@@ -1,0 +1,576 @@
+{
+ "run": "claude-opus-5-5",
+ "model": {
+  "provider": "anthropic",
+  "model": "claude-opus-5-5",
+  "api": null,
+  "params": {
+   "max_tokens": 4096,
+   "output_config": {
+    "effort": "low"
+   }
+  },
+  "unsupported": [],
+  "name": "claude-opus-5-5",
+  "display": {
+   "label": "Claude Opus 5.5",
+   "organization": "Anthropic",
+   "reasoning": "low"
+  },
+  "serving": {
+   "kind": "api",
+   "region": null,
+   "hardware": null
+  },
+  "needs_opening_user_turn": true,
+  "text_with_tool_calls": true
+ },
+ "benchmark_version": "1.0.0",
+ "bundle_version": "1.0.0",
+ "weights": {
+  "task_completion": 1.0,
+  "tool_use": 1.0,
+  "instruction_following": 1.0,
+  "faithfulness": 1.0
+ },
+ "coverage": {
+  "planned": 600,
+  "scored": 600,
+  "missing": {}
+ },
+ "scores": {
+  "calls": 600,
+  "mtva_score": {
+   "value": 84.6,
+   "ci": [
+    82.8,
+    86.3
+   ]
+  },
+  "capabilities": {
+   "task_completion": {
+    "value": 81.8,
+    "ci": [
+     79.0,
+     84.6
+    ]
+   },
+   "tool_use": {
+    "value": 92.6,
+    "ci": [
+     90.4,
+     94.8
+    ]
+   },
+   "instruction_following": {
+    "value": 68.4,
+    "ci": [
+     65.0,
+     71.7
+    ]
+   },
+   "faithfulness": {
+    "value": 95.6,
+    "ci": [
+     94.4,
+     96.7
+    ]
+   }
+  },
+  "goal_reached": {
+   "value": 76.0,
+   "ci": [
+    70.7,
+    81.2
+   ]
+  },
+  "clean_calls": {
+   "value": 19.2,
+   "ci": [
+    14.5,
+    23.8
+   ]
+  },
+  "outcomes": {
+   "alternative": 56,
+   "not_reached": 15,
+   "partial": 127,
+   "reached": 400,
+   "wrong_result": 2
+  },
+  "endings": {
+   "terminal_tool": 600
+  },
+  "slices": {
+   "language": {
+    "Bengali": {
+     "calls": 36,
+     "mtva_score": 87.3,
+     "capabilities": {
+      "task_completion": 84.7,
+      "tool_use": 95.1,
+      "instruction_following": 72.2,
+      "faithfulness": 97.2
+     }
+    },
+    "English": {
+     "calls": 180,
+     "mtva_score": 86.4,
+     "capabilities": {
+      "task_completion": 84.6,
+      "tool_use": 93.8,
+      "instruction_following": 71.0,
+      "faithfulness": 96.2
+     }
+    },
+    "French": {
+     "calls": 42,
+     "mtva_score": 86.3,
+     "capabilities": {
+      "task_completion": 83.3,
+      "tool_use": 93.5,
+      "instruction_following": 74.4,
+      "faithfulness": 94.0
+     }
+    },
+    "Gujarati": {
+     "calls": 42,
+     "mtva_score": 82.3,
+     "capabilities": {
+      "task_completion": 79.8,
+      "tool_use": 95.2,
+      "instruction_following": 58.9,
+      "faithfulness": 95.2
+     }
+    },
+    "Hindi": {
+     "calls": 84,
+     "mtva_score": 82.1,
+     "capabilities": {
+      "task_completion": 77.4,
+      "tool_use": 88.4,
+      "instruction_following": 67.0,
+      "faithfulness": 95.5
+     }
+    },
+    "Kannada": {
+     "calls": 36,
+     "mtva_score": 87.3,
+     "capabilities": {
+      "task_completion": 85.4,
+      "tool_use": 95.8,
+      "instruction_following": 74.3,
+      "faithfulness": 93.8
+     }
+    },
+    "Marathi": {
+     "calls": 42,
+     "mtva_score": 82.9,
+     "capabilities": {
+      "task_completion": 80.4,
+      "tool_use": 89.9,
+      "instruction_following": 66.7,
+      "faithfulness": 94.6
+     }
+    },
+    "Spanish": {
+     "calls": 54,
+     "mtva_score": 83.2,
+     "capabilities": {
+      "task_completion": 81.0,
+      "tool_use": 90.3,
+      "instruction_following": 66.2,
+      "faithfulness": 95.4
+     }
+    },
+    "Tamil": {
+     "calls": 42,
+     "mtva_score": 84.1,
+     "capabilities": {
+      "task_completion": 81.5,
+      "tool_use": 93.5,
+      "instruction_following": 64.9,
+      "faithfulness": 96.4
+     }
+    },
+    "Telugu": {
+     "calls": 42,
+     "mtva_score": 82.0,
+     "capabilities": {
+      "task_completion": 76.8,
+      "tool_use": 92.9,
+      "instruction_following": 63.1,
+      "faithfulness": 95.2
+     }
+    }
+   },
+   "industry": {
+    "Agriculture": {
+     "calls": 12,
+     "mtva_score": 94.8,
+     "capabilities": {
+      "task_completion": 95.8,
+      "tool_use": 93.8,
+      "instruction_following": 89.6,
+      "faithfulness": 100.0
+     }
+    },
+    "Automotive": {
+     "calls": 30,
+     "mtva_score": 77.5,
+     "capabilities": {
+      "task_completion": 72.5,
+      "tool_use": 84.2,
+      "instruction_following": 57.5,
+      "faithfulness": 95.8
+     }
+    },
+    "BFSI": {
+     "calls": 84,
+     "mtva_score": 82.9,
+     "capabilities": {
+      "task_completion": 77.4,
+      "tool_use": 93.8,
+      "instruction_following": 65.2,
+      "faithfulness": 95.2
+     }
+    },
+    "Construction / Infrastructure": {
+     "calls": 12,
+     "mtva_score": 79.2,
+     "capabilities": {
+      "task_completion": 70.8,
+      "tool_use": 87.5,
+      "instruction_following": 62.5,
+      "faithfulness": 95.8
+     }
+    },
+    "E-commerce / Retail": {
+     "calls": 42,
+     "mtva_score": 83.0,
+     "capabilities": {
+      "task_completion": 78.6,
+      "tool_use": 91.7,
+      "instruction_following": 66.1,
+      "faithfulness": 95.8
+     }
+    },
+    "Education": {
+     "calls": 18,
+     "mtva_score": 87.5,
+     "capabilities": {
+      "task_completion": 83.3,
+      "tool_use": 93.1,
+      "instruction_following": 76.4,
+      "faithfulness": 97.2
+     }
+    },
+    "Events & Entertainment": {
+     "calls": 6,
+     "mtva_score": 89.6,
+     "capabilities": {
+      "task_completion": 95.8,
+      "tool_use": 79.2,
+      "instruction_following": 91.7,
+      "faithfulness": 91.7
+     }
+    },
+    "Fitness & Wellness": {
+     "calls": 12,
+     "mtva_score": 88.0,
+     "capabilities": {
+      "task_completion": 83.3,
+      "tool_use": 93.8,
+      "instruction_following": 77.1,
+      "faithfulness": 97.9
+     }
+    },
+    "Funeral / Sensitive Services": {
+     "calls": 6,
+     "mtva_score": 86.5,
+     "capabilities": {
+      "task_completion": 87.5,
+      "tool_use": 87.5,
+      "instruction_following": 75.0,
+      "faithfulness": 95.8
+     }
+    },
+    "General Purpose": {
+     "calls": 12,
+     "mtva_score": 78.1,
+     "capabilities": {
+      "task_completion": 64.6,
+      "tool_use": 87.5,
+      "instruction_following": 64.6,
+      "faithfulness": 95.8
+     }
+    },
+    "Government / Public Services": {
+     "calls": 12,
+     "mtva_score": 88.0,
+     "capabilities": {
+      "task_completion": 91.7,
+      "tool_use": 95.8,
+      "instruction_following": 66.7,
+      "faithfulness": 97.9
+     }
+    },
+    "HR / Recruitment": {
+     "calls": 6,
+     "mtva_score": 82.3,
+     "capabilities": {
+      "task_completion": 83.3,
+      "tool_use": 91.7,
+      "instruction_following": 54.2,
+      "faithfulness": 100.0
+     }
+    },
+    "Healthcare": {
+     "calls": 60,
+     "mtva_score": 85.8,
+     "capabilities": {
+      "task_completion": 87.9,
+      "tool_use": 92.1,
+      "instruction_following": 65.8,
+      "faithfulness": 97.5
+     }
+    },
+    "Home Services": {
+     "calls": 12,
+     "mtva_score": 82.8,
+     "capabilities": {
+      "task_completion": 83.3,
+      "tool_use": 89.6,
+      "instruction_following": 68.8,
+      "faithfulness": 89.6
+     }
+    },
+    "Legal Services": {
+     "calls": 6,
+     "mtva_score": 82.3,
+     "capabilities": {
+      "task_completion": 75.0,
+      "tool_use": 100.0,
+      "instruction_following": 54.2,
+      "faithfulness": 100.0
+     }
+    },
+    "Logistics & Supply Chain": {
+     "calls": 12,
+     "mtva_score": 82.8,
+     "capabilities": {
+      "task_completion": 83.3,
+      "tool_use": 87.5,
+      "instruction_following": 66.7,
+      "faithfulness": 93.8
+     }
+    },
+    "Multi-Functional / General Customer Support": {
+     "calls": 36,
+     "mtva_score": 84.9,
+     "capabilities": {
+      "task_completion": 81.9,
+      "tool_use": 93.1,
+      "instruction_following": 66.0,
+      "faithfulness": 98.6
+     }
+    },
+    "Nonprofit / Charity": {
+     "calls": 18,
+     "mtva_score": 86.5,
+     "capabilities": {
+      "task_completion": 87.5,
+      "tool_use": 91.7,
+      "instruction_following": 70.8,
+      "faithfulness": 95.8
+     }
+    },
+    "Pet Services": {
+     "calls": 12,
+     "mtva_score": 94.3,
+     "capabilities": {
+      "task_completion": 93.8,
+      "tool_use": 100.0,
+      "instruction_following": 85.4,
+      "faithfulness": 97.9
+     }
+    },
+    "Pharmaceutical": {
+     "calls": 6,
+     "mtva_score": 89.6,
+     "capabilities": {
+      "task_completion": 79.2,
+      "tool_use": 100.0,
+      "instruction_following": 79.2,
+      "faithfulness": 100.0
+     }
+    },
+    "Professional Services": {
+     "calls": 12,
+     "mtva_score": 86.5,
+     "capabilities": {
+      "task_completion": 85.4,
+      "tool_use": 95.8,
+      "instruction_following": 70.8,
+      "faithfulness": 93.8
+     }
+    },
+    "Real Estate": {
+     "calls": 30,
+     "mtva_score": 84.6,
+     "capabilities": {
+      "task_completion": 82.5,
+      "tool_use": 95.8,
+      "instruction_following": 63.3,
+      "faithfulness": 96.7
+     }
+    },
+    "Religious / Spiritual": {
+     "calls": 6,
+     "mtva_score": 76.0,
+     "capabilities": {
+      "task_completion": 66.7,
+      "tool_use": 83.3,
+      "instruction_following": 54.2,
+      "faithfulness": 100.0
+     }
+    },
+    "SaaS / Technology": {
+     "calls": 18,
+     "mtva_score": 82.3,
+     "capabilities": {
+      "task_completion": 79.2,
+      "tool_use": 88.9,
+      "instruction_following": 66.7,
+      "faithfulness": 94.4
+     }
+    },
+    "Sports / Recreation": {
+     "calls": 6,
+     "mtva_score": 92.7,
+     "capabilities": {
+      "task_completion": 95.8,
+      "tool_use": 100.0,
+      "instruction_following": 79.2,
+      "faithfulness": 95.8
+     }
+    },
+    "Staffing / Temp Agencies": {
+     "calls": 12,
+     "mtva_score": 88.0,
+     "capabilities": {
+      "task_completion": 93.8,
+      "tool_use": 93.8,
+      "instruction_following": 72.9,
+      "faithfulness": 91.7
+     }
+    },
+    "Telecom": {
+     "calls": 42,
+     "mtva_score": 89.4,
+     "capabilities": {
+      "task_completion": 86.9,
+      "tool_use": 97.6,
+      "instruction_following": 82.7,
+      "faithfulness": 90.5
+     }
+    },
+    "Travel & Hospitality": {
+     "calls": 36,
+     "mtva_score": 80.4,
+     "capabilities": {
+      "task_completion": 72.2,
+      "tool_use": 90.3,
+      "instruction_following": 61.8,
+      "faithfulness": 97.2
+     }
+    },
+    "Utilities": {
+     "calls": 24,
+     "mtva_score": 84.9,
+     "capabilities": {
+      "task_completion": 84.4,
+      "tool_use": 97.9,
+      "instruction_following": 68.8,
+      "faithfulness": 88.5
+     }
+    }
+   },
+   "difficulty": {
+    "easy": {
+     "calls": 100,
+     "mtva_score": 88.8,
+     "capabilities": {
+      "task_completion": 88.5,
+      "tool_use": 94.2,
+      "instruction_following": 74.8,
+      "faithfulness": 97.5
+     }
+    },
+    "medium": {
+     "calls": 300,
+     "mtva_score": 85.1,
+     "capabilities": {
+      "task_completion": 82.1,
+      "tool_use": 93.1,
+      "instruction_following": 69.2,
+      "faithfulness": 96.1
+     }
+    },
+    "hard": {
+     "calls": 200,
+     "mtva_score": 81.8,
+     "capabilities": {
+      "task_completion": 78.1,
+      "tool_use": 91.1,
+      "instruction_following": 64.0,
+      "faithfulness": 93.9
+     }
+    }
+   },
+   "direction": {
+    "inbound": {
+     "calls": 360,
+     "mtva_score": 87.7,
+     "capabilities": {
+      "task_completion": 86.2,
+      "tool_use": 94.3,
+      "instruction_following": 75.3,
+      "faithfulness": 94.7
+     }
+    },
+    "outbound": {
+     "calls": 240,
+     "mtva_score": 80.0,
+     "capabilities": {
+      "task_completion": 75.2,
+      "tool_use": 90.1,
+      "instruction_following": 57.9,
+      "faithfulness": 96.9
+     }
+    }
+   }
+  }
+ },
+ "latency_ms": {
+  "ttft_warm_p50": 1715,
+  "ttft_warm_p90": 3524,
+  "ttft_cold_p50": 1480,
+  "warm_requests": 6566,
+  "cold_requests": 600
+ },
+ "provenance": {
+  "code": {
+   "version": "1.0.0.dev0",
+   "commit": "e9153c43ca670fdf00253c0d2dfea7582f26b8ca",
+   "clean": false
+  },
+  "bundle_hash": "114339e4e49673ed271b3083eefd123fa6f4438a21245b7db2a3ca56f1b69868",
+  "model_hash": "5bf911849ac0aaf8667e44f6f9b03ed5e0777efe9f49d2cc5de7c308ad45903b",
+  "caller_hash": "c0d72fc7a5b402a279f62be36d2f61c4efd99c3cd21619146fe3e431bb50c550",
+  "caller_prompt_hash": "4288675773d650ede60ac782b5060b1aff3dc1e6274c6b11ed16a3a263207685",
+  "simulator_version": "2",
+  "judge_model": "claude-opus-5-5",
+  "judge_inputs_hash": "4234da9880885b43eb3f7051f2e3beae65e7e52aa40a5fde80684508e6cccb08"
+ }
+}

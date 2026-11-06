@@ -1,0 +1,16 @@
+# Effort low, the lowest this model allows: its thinking cannot be turned off. Anthropic needs a
+# user message before the agent speaks.
+name: claude-opus-5-5
+display:
+  label: Claude Opus 5.5
+  organization: Anthropic
+  reasoning: low
+provider: anthropic
+model: claude-opus-5-5
+params:
+  max_tokens: 4096
+  output_config:
+    effort: low
+needs_opening_user_turn: true
+serving:
+  kind: api

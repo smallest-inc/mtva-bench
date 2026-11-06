@@ -1,0 +1,15 @@
+# Reasoning at low, the lowest level this model has: Gemini 3 and later cannot turn thinking off.
+# Gemini needs a user message before the agent speaks.
+name: gemini-4-argon
+display:
+  label: Gemini 4 Argon
+  organization: Google
+  reasoning: low
+provider: gemini
+model: gemini-4-argon
+params:
+  reasoning_effort: low
+unsupported: [seed]
+needs_opening_user_turn: true
+serving:
+  kind: api

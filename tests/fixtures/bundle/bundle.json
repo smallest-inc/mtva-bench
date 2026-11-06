@@ -1,0 +1,10 @@
+{
+  "name": "mtva-bench-fixture",
+  "version": "1.0.0",
+  "schema_version": "3.0",
+  "files": {
+    "agents/demo_dental.json": "d5177ca58e0e07cd05c547223fc96d8ece26789a6ea9e48e9fe9d581bea8db6d",
+    "scenarios/demo_dental/demo_dental_01.json": "e25aec40a50bb8804b4f10a218befccb4e99f3a2885a81097e08f32d62fd183a",
+    "voice_guide.md": "54c9e3b7d21d802eca775d69a342a4087b9a48c8e865fafc5b3335a921b2b82b"
+  }
+}

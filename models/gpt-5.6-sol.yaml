@@ -1,0 +1,15 @@
+# Reasoning off, on the Responses API, which takes reasoning effort together with function tools.
+name: gpt-5.6-sol
+display:
+  label: GPT-5.6 Sol
+  organization: OpenAI
+  reasoning: none
+provider: openai
+model: gpt-5.6-sol
+api: responses
+params:
+  reasoning:
+    effort: none
+unsupported: [seed]
+serving:
+  kind: api

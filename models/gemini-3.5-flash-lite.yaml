@@ -1,0 +1,15 @@
+# Reasoning at minimal, the lowest level this model has: Gemini 3 cannot turn thinking off. Gemini
+# needs a user message before the agent speaks.
+name: gemini-3.5-flash-lite
+display:
+  label: Gemini 3.5 Flash-Lite
+  organization: Google
+  reasoning: minimal
+provider: gemini
+model: gemini-3.5-flash-lite
+params:
+  reasoning_effort: minimal
+unsupported: [seed]
+needs_opening_user_turn: true
+serving:
+  kind: api

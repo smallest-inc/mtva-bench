@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="923" viewBox="0 0 1200 923" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" role="img">
+<title>Faithfulness</title>
+<desc>Faithfulness Was everything the agent said true? Scored 0 to 100; lines are 95% intervals.</desc>
+<rect x="0.5" y="0.5" width="1199" height="922" rx="18" fill="#fbfbf9" stroke="#ebe9e4"/>
+<circle cx="68" cy="67" r="4.5" fill="#2a78d6"/>
+<text x="80.0" y="72.0" fill="#8a877f" font-size="13" text-anchor="start" font-weight="600" letter-spacing="1.6">MTVA-BENCH · CAPABILITY 4 OF 4</text>
+<text x="64.0" y="124.0" fill="#111111" font-size="36" text-anchor="start" font-weight="700" letter-spacing="-0.9">Faithfulness</text>
+<text x="64.0" y="160.0" fill="#55534e" font-size="17" text-anchor="start" font-weight="400">Was everything the agent said true? Scored 0 to 100; lines are 95% intervals.</text>
+<line x1="248.8" y1="206.0" x2="248.8" y2="756.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="248.8" y="778.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400" font-variant-numeric="tabular-nums">0</text>
+<line x1="453.1" y1="206.0" x2="453.1" y2="756.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="453.1" y="778.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400" font-variant-numeric="tabular-nums">25</text>
+<line x1="657.4" y1="206.0" x2="657.4" y2="756.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="657.4" y="778.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400" font-variant-numeric="tabular-nums">50</text>
+<line x1="861.7" y1="206.0" x2="861.7" y2="756.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="861.7" y="778.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400" font-variant-numeric="tabular-nums">75</text>
+<line x1="1066.0" y1="206.0" x2="1066.0" y2="756.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="1066.0" y="778.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400" font-variant-numeric="tabular-nums">100</text>
+<path d="M248.8,220.0 H1047.1 Q1052.1,220.0 1052.1,225.0 V235.0 Q1052.1,240.0 1047.1,240.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="1043.1" y1="230.0" x2="1058.6" y2="230.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="235.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-6.1 Sol</text>
+<text x="1068.6" y="235.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">98.3</text>
+<path d="M248.8,256.0 H1045.5 Q1050.5,256.0 1050.5,261.0 V271.0 Q1050.5,276.0 1045.5,276.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="1042.3" y1="266.0" x2="1057.0" y2="266.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="271.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-6.1 Terra</text>
+<text x="1067.0" y="271.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">98.1</text>
+<path d="M248.8,292.0 H1025.0 Q1030.0,292.0 1030.0,297.0 V307.0 Q1030.0,312.0 1025.0,312.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="1020.2" y1="302.0" x2="1039.0" y2="302.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="307.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">Claude Opus 5.5</text>
+<text x="1049.0" y="307.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">95.6</text>
+<path d="M248.8,328.0 H1021.0 Q1026.0,328.0 1026.0,333.0 V343.0 Q1026.0,348.0 1021.0,348.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="1010.4" y1="338.0" x2="1039.0" y2="338.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="343.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-6 Luna</text>
+<text x="1049.0" y="343.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">95.1</text>
+<path d="M248.8,364.0 H1016.9 Q1021.9,364.0 1021.9,369.0 V379.0 Q1021.9,384.0 1016.9,384.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="1008.8" y1="374.0" x2="1033.3" y2="374.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="379.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-5.6 Sol</text>
+<text x="1043.3" y="379.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">94.6</text>
+<path d="M248.8,400.0 H1007.1 Q1012.1,400.0 1012.1,405.0 V415.0 Q1012.1,420.0 1007.1,420.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="998.2" y1="410.0" x2="1023.5" y2="410.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="415.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">Claude Sonnet 5.5</text>
+<text x="1033.5" y="415.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">93.4</text>
+<path d="M248.8,436.0 H1006.2 Q1011.2,436.0 1011.2,441.0 V451.0 Q1011.2,456.0 1006.2,456.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="996.5" y1="446.0" x2="1025.1" y2="446.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="451.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-5.6 Terra</text>
+<text x="1035.1" y="451.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">93.3</text>
+<path d="M248.8,472.0 H989.9 Q994.9,472.0 994.9,477.0 V487.0 Q994.9,492.0 989.9,492.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="982.6" y1="482.0" x2="1008.0" y2="482.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="487.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">Claude Fable 5.1</text>
+<text x="1018.0" y="487.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">91.3</text>
+<path d="M248.8,508.0 H980.9 Q985.9,508.0 985.9,513.0 V523.0 Q985.9,528.0 980.9,528.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="969.6" y1="518.0" x2="1002.3" y2="518.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="523.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-5.6 Luna</text>
+<text x="1012.3" y="523.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">90.2</text>
+<path d="M248.8,544.0 H950.7 Q955.7,544.0 955.7,549.0 V559.0 Q955.7,564.0 950.7,564.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="936.1" y1="554.0" x2="975.3" y2="554.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="559.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">Gemini 3.8 Flash</text>
+<text x="985.3" y="559.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">86.5</text>
+<path d="M248.8,580.0 H945.0 Q950.0,580.0 950.0,585.0 V595.0 Q950.0,600.0 945.0,600.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="931.2" y1="590.0" x2="967.9" y2="590.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="595.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">Claude Haiku 5.5</text>
+<text x="977.9" y="595.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">85.8</text>
+<rect x="52.0" y="610.0" width="1096.0" height="32.0" rx="8" fill="#e3edf9"/>
+<path d="M248.8,616.0 H922.9 Q927.9,616.0 927.9,621.0 V631.0 Q927.9,636.0 922.9,636.0 H248.8 Z" fill="#2a78d6"/>
+<line x1="907.5" y1="626.0" x2="949.1" y2="626.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="631.0" fill="#111111" font-size="15" text-anchor="end" font-weight="700">Electron 2.0</text>
+<text x="959.1" y="631.0" fill="#111111" font-size="15" text-anchor="start" font-weight="700" font-variant-numeric="tabular-nums">83.1</text>
+<path d="M248.8,652.0 H866.5 Q871.5,652.0 871.5,657.0 V667.0 Q871.5,672.0 866.5,672.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="845.4" y1="662.0" x2="899.3" y2="662.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="667.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">Gemini 3.5 Flash-Lite</text>
+<text x="909.3" y="667.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">76.2</text>
+<path d="M248.8,688.0 H851.8 Q856.8,688.0 856.8,693.0 V703.0 Q856.8,708.0 851.8,708.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="833.1" y1="698.0" x2="878.9" y2="698.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="703.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-4.1</text>
+<text x="888.9" y="703.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">74.4</text>
+<path d="M248.8,724.0 H846.9 Q851.9,724.0 851.9,729.0 V739.0 Q851.9,744.0 846.9,744.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="823.3" y1="734.0" x2="878.0" y2="734.0" stroke="#111111" stroke-width="1.5" stroke-opacity="0.45" stroke-linecap="round"/>
+<text x="224.8" y="739.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-4.1 mini</text>
+<text x="888.0" y="739.0" fill="#55534e" font-size="15" text-anchor="start" font-weight="400" font-variant-numeric="tabular-nums">73.8</text>
+<line x1="248.8" y1="206.0" x2="248.8" y2="756.0" stroke="#d3d0c9" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="64.0" y="824.0" text-anchor="start"><tspan fill="#55534e" font-size="13.5" font-weight="700">Method.</tspan><tspan fill="#8a877f" font-size="13.5" font-weight="400" dx="5">The judge flags anything the agent said that its tools, its prompt or the caller did not support, such as an invented fact or an action claimed but</tspan></text>
+<text x="64.0" y="845.0" fill="#8a877f" font-size="13.5" text-anchor="start" font-weight="400">never run, and rates each one minor, major or critical. Each capability is scored 1 to 5 per call from the judge&#x27;s verdicts and mapped to 0 to 100.</text>
+<text x="64.0" y="866.0" fill="#8a877f" font-size="13.5" text-anchor="start" font-weight="400">Intervals are 95%, bootstrapped by agent. Every model runs at its lowest reasoning setting.</text>
+<text x="1136.0" y="866.0" fill="#111111" font-size="16" text-anchor="end" font-weight="700">smallest.ai</text>
+</svg>

@@ -1,0 +1,129 @@
+{
+  "schema_version": "3.0",
+  "scenario_id": "demo_dental_01",
+  "agent_id": "demo_dental",
+  "language": "Hindi",
+  "difficulty": "easy",
+  "summary": "A caller books a cleaning for Friday; tests the read-back before booking.",
+  "variables": {
+    "current_date": "August 19, 2026",
+    "current_day": "Wednesday",
+    "current_time": "2:47 PM",
+    "timezone": "Asia/Kolkata",
+    "clinic_name": "MetroMolar",
+    "default_language": "Hindi",
+    "supported_languages_text": "English, Hindi",
+    "agent_gender": "Female"
+  },
+  "caller": {
+    "profile": "Asha Verma wants a cleaning before her sister's wedding on Saturday. She is calling from work and keeps it brief.",
+    "facts": {
+      "name": "Asha Verma",
+      "phone": "9876543210",
+      "preferred_date": "2026-08-21"
+    },
+    "unknowns": [
+      "the clinic's address"
+    ],
+    "agenda": [
+      {
+        "id": "b1",
+        "when": "start",
+        "does": "asks whether Friday is free for a cleaning"
+      },
+      {
+        "id": "b2",
+        "when": "the agent asks for her number",
+        "does": "gives her phone number"
+      },
+      {
+        "id": "b3",
+        "when": "the booking is confirmed",
+        "does": "thanks the agent and says goodbye"
+      }
+    ],
+    "done_when": "a Friday cleaning is booked; asks for a person if Friday is impossible"
+  },
+  "channel": {
+    "asr": "clean",
+    "vad": "clean",
+    "events": []
+  },
+  "world": {
+    "slots": {
+      "2026-08-21": [
+        "11:30 AM"
+      ]
+    },
+    "booking_id": "BK-482913"
+  },
+  "tools": {
+    "book_visit": {
+      "rules": [
+        {
+          "id": "book_friday",
+          "when": {
+            "phone": {
+              "phone": "9876543210"
+            },
+            "date": {
+              "ref": "caller.facts.preferred_date"
+            }
+          },
+          "requires": [],
+          "first_replies": [],
+          "reply": {
+            "status": "booked",
+            "booking_id": "BK-482913",
+            "time": "11:30 AM"
+          }
+        }
+      ],
+      "otherwise": {
+        "status": "unavailable",
+        "note": "no slot for that date"
+      }
+    },
+    "end_call": {
+      "rules": [],
+      "otherwise": {
+        "status": "ended"
+      }
+    }
+  },
+  "evaluation": {
+    "goal": {
+      "outcome": "a cleaning is booked for August 21 at 11:30 AM",
+      "alternatives": [],
+      "caller_must_hear": [
+        "the booking time"
+      ]
+    },
+    "key_actions": [
+      {
+        "id": "book",
+        "tool": "book_visit",
+        "expect": "call",
+        "importance": 3,
+        "arguments": {
+          "phone": {
+            "phone": "9876543210"
+          },
+          "date": {
+            "ref": "caller.facts.preferred_date"
+          }
+        },
+        "after": [],
+        "focus": null,
+        "note": "the booking is the outcome"
+      }
+    ],
+    "focus_rules": [
+      {
+        "id": "confirm_first",
+        "quote": "Always confirm the date and time back to the caller before booking.",
+        "check": "the date and time are read back before book_visit is called"
+      }
+    ]
+  }
+}

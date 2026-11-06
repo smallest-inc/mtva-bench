@@ -1,0 +1,16 @@
+# Thinking off, which this model takes as between_tools, not disabled. Anthropic needs a user
+# message before the agent speaks.
+name: claude-sonnet-5-5
+display:
+  label: Claude Sonnet 5.5
+  organization: Anthropic
+  reasoning: none
+provider: anthropic
+model: claude-sonnet-5-5
+params:
+  max_tokens: 4096
+  thinking:
+    type: between_tools
+needs_opening_user_turn: true
+serving:
+  kind: api

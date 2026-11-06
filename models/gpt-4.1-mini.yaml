@@ -1,0 +1,12 @@
+# A non-reasoning model. It cannot speak and call a tool in one message, so it says its farewell
+# in the end-call tool's concluding_message, which the caller hears as speech.
+name: gpt-4.1-mini
+display:
+  label: GPT-4.1 mini
+  organization: OpenAI
+  reasoning: none
+provider: openai
+model: gpt-4.1-mini
+text_with_tool_calls: false
+serving:
+  kind: api

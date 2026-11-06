@@ -1,0 +1,15 @@
+# Reasoning off, on the Responses API, which takes reasoning effort together with function tools.
+name: gpt-6.1-terra
+display:
+  label: GPT-6.1 Terra
+  organization: OpenAI
+  reasoning: none
+provider: openai
+model: gpt-6.1-terra
+api: responses
+params:
+  reasoning:
+    effort: none
+unsupported: [seed]
+serving:
+  kind: api
