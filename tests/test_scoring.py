@@ -227,5 +227,5 @@ def test_the_readme_is_rewritten_between_its_markers() -> None:
     assert once == "intro\n<!-- mtva:table -->\n| a |\n| b |\n<!-- /mtva:table -->\nend\n"
     assert fill(once, {"table": "| a |\n| b |"}) == once
     assert fill(once, {"table": "| c |"}).count("| a |") == 0
-    with pytest.raises(ReadmeError, match="mtva:highlights"):
-        fill(readme, {"highlights": "x"})
+    with pytest.raises(ReadmeError, match="mtva:arena"):
+        fill(readme, {"arena": "x"})

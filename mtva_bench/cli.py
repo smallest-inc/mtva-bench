@@ -723,7 +723,7 @@ def leaderboard_command(
         outputs |= {assets_dir / name: svg for name, svg in charts(entries, pairs).items()}
         if readme_path.is_file():
             readme = readme_path.read_text(encoding="utf-8")
-            outputs[readme_path] = fill(readme, readme_parts(entries, pairs))
+            outputs[readme_path] = fill(readme, readme_parts(entries))
     except (ConfigError, LeaderboardError, ReadmeError) as error:
         raise click.ClickException(str(error)) from error
     stale = [
