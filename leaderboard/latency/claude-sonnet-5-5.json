@@ -1,0 +1,20 @@
+{
+ "model": "claude-sonnet-5-5",
+ "model_hash": "771a6629e3fd3d70db83ee297ef018f6413ef625abed189978561c6ca17b6858",
+ "region": "us-east-1",
+ "reference": "gpt-6.1-sol",
+ "measured": "2026-11-10",
+ "calls": 100,
+ "failed": 0,
+ "speed": {
+  "ttft_warm_p50": 1088,
+  "ttft_warm_p90": 1463,
+  "ttft_cold_p50": 1065,
+  "first_sentence_warm_p50": 1382,
+  "first_sentence_warm_p90": 2560,
+  "first_sentence_cold_p50": 1435,
+  "tokens_per_second_p50": null,
+  "warm_turns": 754,
+  "cold_turns": 100
+ }
+}

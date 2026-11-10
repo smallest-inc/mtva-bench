@@ -27,31 +27,51 @@ both.
 
 ![Quality against speed](assets/score-vs-latency.svg)
 
+## Time to first sentence
+
+In a cascaded voice agent, text-to-speech can start only once the first complete sentence
+arrives, so that is the moment the caller first hears the agent. A separate latency test replays
+the same recorded calls against every model, one request at a time, from the cloud region
+nearest its provider.
+
+![Time to first sentence](assets/first-sentence.svg)
+
+## Sounds human
+
+A caller judges an agent first by how it sounds. In a blind head-to-head, a judge reads the same
+scenario handled by two models, shown only as what each agent said aloud: no system prompt, tools
+or model names. It picks the agent a caller would more readily take for a skilled person.
+Each model's call is shown first in half of the scenarios, so a lean toward either position
+cancels out. This comparison sits outside the MTVA Score.
+
+![Sounds human](assets/sounds-human.svg)
+
 ## Leaderboard
 
 <!-- mtva:table -->
-| # | Model | Reasoning | MTVA Score | Task | Tools | Instructions | Faithfulness | First token |
-|:-:|:--|:--|--:|--:|--:|--:|--:|--:|
-| 1 | GPT-6.1 Sol | low | 86.9 | 83.8 | 85.6 | 80.1 | 98.3 | 2,076 ms |
-| 2 | GPT-6.1 Terra | none | 86.7 | 83.8 | 85.6 | 79.3 | 98.1 | 1,321 ms |
-| 3 | GPT-5.6 Sol | none | 86.2 | 86.1 | 85.7 | 78.4 | 94.6 | 1,679 ms |
-| 4 | Claude Opus 5.5 | low | 84.6 | 81.8 | 92.6 | 68.4 | 95.6 | 1,715 ms |
-| 5 | Claude Sonnet 5.5 | none | 84.2 | 86.9 | 90.8 | 66.0 | 93.4 | 1,713 ms |
-| 6 | Claude Fable 5.1 | low | 83.5 | 83.5 | 91.0 | 68.3 | 91.3 | 1,259 ms |
-| 7 | GPT-5.6 Terra | none | 78.7 | 80.2 | 77.2 | 64.2 | 93.3 | 1,247 ms |
-| 8 | **Electron 2.0** | none | **78.6** | 83.0 | 81.5 | 66.9 | 83.1 | **305 ms** |
-| 9 | Gemini 3.8 Flash | low | 77.1 | 79.8 | 81.5 | 60.4 | 86.5 | 2,754 ms |
-| 10 | Claude Haiku 5.5 | none | 76.9 | 83.2 | 79.8 | 59.0 | 85.8 | 773 ms |
-| 11 | GPT-5.6 Luna | none | 68.2 | 72.2 | 62.5 | 48.1 | 90.2 | 1,326 ms |
-| 12 | GPT-4.1 | none | 65.3 | 72.2 | 69.4 | 45.1 | 74.4 | 788 ms |
-| 13 | GPT-4.1 mini | none | 61.2 | 65.5 | 61.8 | 43.8 | 73.8 | 797 ms |
-| 14 | Gemini 3.5 Flash-Lite | minimal | 54.0 | 56.0 | 51.5 | 32.3 | 76.2 | 1,074 ms |
-| 15 | GPT-6 Luna | none | 50.5 | 45.2 | 31.1 | 30.5 | 95.1 | 1,366 ms |
+| # | Model | Reasoning | MTVA Score | Task | Tools | Instructions | Faithfulness | First token | First sentence |
+|:-:|:--|:--|--:|--:|--:|--:|--:|--:|--:|
+| 1 | GPT-6.1 Sol | low | 86.9 | 83.8 | 85.6 | 80.1 | 98.3 | 1,473 / 2,608 ms | 2,331 / 5,809 ms |
+| 2 | GPT-6.1 Terra | none | 86.7 | 83.8 | 85.6 | 79.3 | 98.1 | 1,042 / 1,459 ms | 1,612 / 2,804 ms |
+| 3 | GPT-5.6 Sol | none | 86.2 | 86.1 | 85.7 | 78.4 | 94.6 | 1,690 / 5,908 ms | 2,239 / 6,967 ms |
+| 4 | Claude Opus 5.5 | low | 84.6 | 81.8 | 92.6 | 68.4 | 95.6 | 1,232 / 2,426 ms | 2,159 / 6,380 ms |
+| 5 | Claude Sonnet 5.5 | none | 84.2 | 86.9 | 90.8 | 66.0 | 93.4 | 1,088 / 1,463 ms | 1,382 / 2,560 ms |
+| 6 | Claude Fable 5.1 | low | 83.5 | 83.5 | 91.0 | 68.3 | 91.3 | 866 / 2,779 ms | 1,888 / 4,280 ms |
+| 7 | GPT-5.6 Terra | none | 78.7 | 80.2 | 77.2 | 64.2 | 93.3 | 805 / 1,155 ms | 1,489 / 3,897 ms |
+| 8 | **Electron 2.0** | none | **78.6** | 83.0 | 81.5 | 66.9 | 83.1 | **169 / 225 ms** | **327 / 559 ms** |
+| 9 | Gemini 3.8 Flash | low | 77.1 | 79.8 | 81.5 | 60.4 | 86.5 | 2,499 / 6,407 ms | 3,156 / 10,663 ms |
+| 10 | Claude Haiku 5.5 | none | 76.9 | 83.2 | 79.8 | 59.0 | 85.8 | 587 / 873 ms | 833 / 1,484 ms |
+| 11 | GPT-5.6 Luna | none | 68.2 | 72.2 | 62.5 | 48.1 | 90.2 | 837 / 1,514 ms | 1,324 / 4,069 ms |
+| 12 | GPT-4.1 | none | 65.3 | 72.2 | 69.4 | 45.1 | 74.4 | 646 / 978 ms | 860 / 2,139 ms |
+| 13 | GPT-4.1 mini | none | 61.2 | 65.5 | 61.8 | 43.8 | 73.8 | 592 / 850 ms | 793 / 2,055 ms |
+| 14 | Gemini 3.5 Flash-Lite | minimal | 54.0 | 56.0 | 51.5 | 32.3 | 76.2 | 864 / 1,252 ms | 1,197 / 2,906 ms |
+| 15 | GPT-6 Luna | none | 50.5 | 45.2 | 31.1 | 30.5 | 95.1 | 1,139 / 4,566 ms | 1,842 / 6,166 ms |
 <!-- /mtva:table -->
 
-Scores run from 0 to 100; the charts below show each one's 95% interval. First token is the
-median time to the first token on warm turns. Every model runs at the lowest reasoning setting it accepts. [How a run
-works](#how-a-run-works) explains each number.
+Scores run from 0 to 100; the charts below show each one's 95% interval. First token and first
+sentence are the median and the 90th percentile over warm turns in the latency test. Every model
+runs at the lowest reasoning setting it accepts. [How a run works](#how-a-run-works) explains
+each number.
 
 ## What it measures
 
@@ -87,16 +107,6 @@ Was everything the agent said true? Facts that came from nowhere, actions claime
 and details that contradict the tools or the caller are all counted here.
 
 ![Faithfulness](assets/faithfulness.svg)
-
-## Sounds human
-
-A caller judges an agent first by how it sounds. In a blind head-to-head, a judge reads the same
-scenario handled by two models, shown only as what each agent said aloud: no system prompt, tools
-or model names. It picks the agent a caller would more readily take for a skilled person.
-Each model's call is shown first in half of the scenarios, so a lean toward either position
-cancels out. This comparison sits outside the MTVA Score.
-
-![Sounds human](assets/sounds-human.svg)
 
 ## Across languages
 
@@ -139,9 +149,10 @@ flowchart LR
 
 **Fairness.** Every model meets the same caller, judge and settings. A model that cannot speak
 and call a tool in one message says its goodbye inside the end-call tool, and the judge does not
-count the silence around its tool calls against it. Latency is measured from India over each
-provider's public API, so it includes network distance; models hosted in the US would answer roughly 200
-to 250 ms sooner from there, and Electron is served from India.
+count the silence around its tool calls against it. Latency comes from a separate test that
+replays the same recorded calls against every model, one request at a time, over each
+provider's public API, from the cloud region nearest that provider: Virginia for the models
+hosted in the US and Mumbai for Electron, so network distance adds as little as it can.
 
 ## The test set stays private
 

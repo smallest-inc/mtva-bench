@@ -1,0 +1,20 @@
+{
+ "model": "claude-opus-5-5",
+ "model_hash": "5bf911849ac0aaf8667e44f6f9b03ed5e0777efe9f49d2cc5de7c308ad45903b",
+ "region": "us-east-1",
+ "reference": "gpt-6.1-sol",
+ "measured": "2026-11-10",
+ "calls": 100,
+ "failed": 0,
+ "speed": {
+  "ttft_warm_p50": 1232,
+  "ttft_warm_p90": 2426,
+  "ttft_cold_p50": 1138,
+  "first_sentence_warm_p50": 2159,
+  "first_sentence_warm_p90": 6380,
+  "first_sentence_cold_p50": 1729,
+  "tokens_per_second_p50": null,
+  "warm_turns": 750,
+  "cold_turns": 100
+ }
+}

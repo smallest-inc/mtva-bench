@@ -16,8 +16,11 @@ from itertools import pairwise
 
 from mtva_bench.leaderboard.build import Entry
 from mtva_bench.run.arena import ArenaSummary
+from mtva_bench.scoring.latency import Speed
 
 HIGHLIGHT = "Smallest AI"
+# Cloud regions as a reader knows them; any other region shows under its own name.
+REGION_NAMES = {"us-east-1": "Virginia", "ap-south-1": "Mumbai"}
 WORDMARK = "smallest.ai"
 WIDTH = 1200
 MARGIN = 64
@@ -266,13 +269,17 @@ def latency_label(ms: float) -> str:
     return f"{ms:.0f} ms" if ms < 1000 else f"{ms / 1000:g} s"
 
 
+def response_ms(entry: Entry) -> int:
+    """The latency the charts plot: time to first token, 90th percentile of warm turns, which
+    is what a caller notices: the slow turns, not the typical one."""
+    return entry.latency.ttft_warm_p90
+
+
 def frontier(entries: Sequence[Entry]) -> list[Entry]:
     """The runs no other run beats on both score and latency, fastest first."""
     best = -math.inf
     found = []
-    for entry in sorted(
-        entries, key=lambda e: (e.latency.ttft_warm_p50, -e.scores.mtva_score.value)
-    ):
+    for entry in sorted(entries, key=lambda e: (response_ms(e), -e.scores.mtva_score.value)):
         if entry.scores.mtva_score.value > best:
             found.append(entry)
             best = entry.scores.mtva_score.value
@@ -366,12 +373,12 @@ def score_vs_latency(entries: Sequence[Entry]) -> str:
     card = Card(
         f"MTVA-Bench · {len(entries)} models",
         "Quality against speed",
-        "MTVA Score against median time to first token. Up and to the left is better.",
+        "MTVA Score against time to first token, 90th percentile. Up and to the left is better.",
         "Each model's MTVA Score against its warm time to first token, with the Pareto frontier.",
     )
     left, right, top = MARGIN + 44, WIDTH - MARGIN, card.y + 8
     bottom = top + 470
-    latencies = [e.latency.ttft_warm_p50 for e in entries]
+    latencies = [response_ms(e) for e in entries]
     low_x = max(t for t in LATENCY_TICKS if t <= min(latencies) * 0.8)
     high_x = min(t for t in LATENCY_TICKS if t >= max(latencies) * 1.25)
     low_y = math.floor((min(e.scores.mtva_score.ci[0] for e in entries) - 2) / 10) * 10
@@ -396,7 +403,7 @@ def score_vs_latency(entries: Sequence[Entry]) -> str:
     card.text(
         (left + right) / 2,
         bottom + 52,
-        "Time to first token, median of warm turns (log scale)",
+        "Time to first token, 90th percentile of warm turns (log scale)",
         SECONDARY,
         14,
         anchor="middle",
@@ -406,10 +413,8 @@ def score_vs_latency(entries: Sequence[Entry]) -> str:
         f'fill="{SECONDARY}" font-size="14" text-anchor="middle">MTVA Score</text>'
     )
 
-    points = [(e, x_at(e.latency.ttft_warm_p50), y_at(e.scores.mtva_score.value)) for e in entries]
-    edge = [
-        (x_at(e.latency.ttft_warm_p50), y_at(e.scores.mtva_score.value)) for e in frontier(entries)
-    ]
+    points = [(e, x_at(response_ms(e)), y_at(e.scores.mtva_score.value)) for e in entries]
+    edge = [(x_at(response_ms(e)), y_at(e.scores.mtva_score.value)) for e in frontier(entries)]
     if len(edge) > 1:
         path = " ".join(f"{'M' if i == 0 else 'L'}{x:.1f},{y:.1f}" for i, (x, y) in enumerate(edge))
         card.add(
@@ -495,6 +500,10 @@ def score_vs_latency(entries: Sequence[Entry]) -> str:
     )
 
 
+def place(regions: Iterable[str]) -> str:
+    return " or ".join(sorted(REGION_NAMES.get(region, region) for region in regions))
+
+
 def latency_note(entries: Sequence[Entry]) -> str:
     """Where the latency on the charts was measured."""
     regions = sorted({entry.region for entry in entries if entry.region})
@@ -502,12 +511,114 @@ def latency_note(entries: Sequence[Entry]) -> str:
         return (
             "Latency comes from a separate test: the same recorded calls replayed against every "
             "model, one request at a time, over its provider's public API, from the cloud "
-            f"region nearest the provider ({', '.join(regions)}). It is the median time to first "
-            "token on warm turns, after the opening one."
+            f"region nearest the provider ({place(regions)}). It is the 90th percentile of "
+            "time to first token on warm turns, after the opening one: 9 turns in 10 start sooner."
         )
     return (
-        "Latency is the median time to first token on warm turns, after the opening one, "
-        "measured from India during the benchmark runs, so it includes network distance."
+        "Latency is the 90th percentile of time to first token on warm turns, after the opening "
+        "one, measured from India during the benchmark runs, so it includes network distance."
+    )
+
+
+# --- time to first sentence -----------------------------------------------------------------
+
+
+def nice_ceiling(value: float) -> tuple[int, int]:
+    """An axis end at or above `value`, and its tick step."""
+    for step in (100, 200, 250, 500, 1000, 2000, 2500, 5000):
+        if value / step <= 6:
+            return math.ceil(value / step) * step, step
+    step = 10000
+    return math.ceil(value / step) * step, step
+
+
+def first_sentence(entries: Sequence[Entry]) -> str | None:
+    """Each model's time to its first spoken sentence, fastest first, with a tick where its first
+    token lands. Drawn only when every model has a latency test result."""
+    if not all(isinstance(entry.latency, Speed) for entry in entries):
+        return None
+    timed = [(entry, entry.latency) for entry in entries if isinstance(entry.latency, Speed)]
+    ranked = sorted(timed, key=lambda pair: (pair[1].first_sentence_warm_p90, pair[0].label))
+    card = Card(
+        "MTVA-Bench · latency test",
+        "Time to first sentence",
+        "When the caller first hears the agent, 90th percentile of warm turns. The tick marks "
+        "the first token.",
+        "Each model's time to its first complete spoken sentence and to its first token.",
+    )
+    row, thickness = 36, 20
+    top = card.y + 8
+    label_width = max(text_width(entry.label, 15, True) for entry, _ in ranked)
+    x0 = MARGIN + label_width + 24
+    x1 = WIDTH - MARGIN - 120
+    end, step = nice_ceiling(max(speed.first_sentence_warm_p90 for _, speed in ranked))
+    bottom = top + row * len(ranked)
+
+    def x_at(ms: float) -> float:
+        return x0 + ms / end * (x1 - x0)
+
+    for tick in range(0, end + 1, step):
+        x = x_at(tick)
+        card.line(x, top - 6, x, bottom + 4, GRID)
+        label = f"{tick / 1000:g} s" if tick else "0"
+        card.text(x, bottom + 26, label, MUTED, 13, anchor="middle", numeric=True)
+    for index, (entry, speed) in enumerate(ranked):
+        center = top + row * index + row / 2
+        bold = highlighted(entry)
+        if bold:
+            card.rect(
+                MARGIN - 12,
+                center - row / 2 + 2,
+                WIDTH - 2 * MARGIN + 24,
+                row - 4,
+                ACCENT_SOFT,
+                radius=8,
+            )
+        end_x = x_at(speed.first_sentence_warm_p90)
+        card.bar(x0, end_x, center, thickness, ACCENT if bold else BAR)
+        tick_x = x_at(speed.ttft_warm_p90)
+        card.line(
+            tick_x,
+            center - thickness / 2 - 3,
+            tick_x,
+            center + thickness / 2 + 3,
+            INK,
+            width=2,
+            opacity=0.75,
+        )
+        card.text(
+            MARGIN + label_width,
+            center + 5,
+            entry.label,
+            INK if bold else SECONDARY,
+            15,
+            anchor="end",
+            weight=700 if bold else 400,
+        )
+        card.runs(
+            end_x + 10,
+            center + 5,
+            [
+                (
+                    f"{speed.first_sentence_warm_p90:,} ms",
+                    INK if bold else SECONDARY,
+                    15,
+                    700 if bold else 400,
+                    0,
+                ),
+                (f"first token {speed.ttft_warm_p90:,}", MUTED, 12.5, 400, 8),
+            ],
+        )
+    card.line(x0, top - 6, x0, bottom + 4, AXIS)
+    card.y = bottom + 36
+    regions = sorted({entry.region for entry, _ in ranked if entry.region})
+    return card.render(
+        "Text-to-speech starts once the first complete sentence arrives, so this is when the "
+        "caller first hears the agent. The same recorded calls were replayed against every "
+        "model, one request at a time, over its provider's public API, from the cloud region "
+        f"nearest the provider ({place(regions)}). Tool steps before the agent speaks "
+        "count; the mock tools' own time does not. 90th percentile of warm turns, after the "
+        "opening one: 9 turns in 10 are faster."
     )
 
 
@@ -768,6 +879,7 @@ def charts(entries: Sequence[Entry], pairs: Sequence[ArenaSummary]) -> dict[str,
     """Every chart, by file name."""
     drawn: dict[str, str | None] = {
         "score-vs-latency.svg": score_vs_latency(entries),
+        "first-sentence.svg": first_sentence(entries),
     }
     for index, (key, (name, question, method)) in enumerate(CAPABILITIES.items(), start=1):
         drawn[f"{key.replace('_', '-')}.svg"] = ranked_bars(

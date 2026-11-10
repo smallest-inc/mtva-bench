@@ -1,0 +1,20 @@
+{
+ "model": "gemini-3.5-flash-lite",
+ "model_hash": "cac752c4f43a5bbbf49972e91178fff8ace398b02c09f7e240a2cb27a36c7d01",
+ "region": "us-east-1",
+ "reference": "gpt-6.1-sol",
+ "measured": "2026-11-10",
+ "calls": 100,
+ "failed": 0,
+ "speed": {
+  "ttft_warm_p50": 864,
+  "ttft_warm_p90": 1252,
+  "ttft_cold_p50": 759,
+  "first_sentence_warm_p50": 1197,
+  "first_sentence_warm_p90": 2906,
+  "first_sentence_cold_p50": 858,
+  "tokens_per_second_p50": null,
+  "warm_turns": 582,
+  "cold_turns": 100
+ }
+}

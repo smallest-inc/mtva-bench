@@ -54,7 +54,7 @@ class Speed(BaseModel):
     token, and to the first complete spoken sentence, which is when text-to-speech can start;
     tool rounds before the agent speaks count towards it, the mock tools' own time does not.
     The opening turn is cold and reported apart. Tokens per second is the generation rate once
-    a reply has started."""
+    a reply has started; it stays with the run and is left out of what is published."""
 
     model_config = ConfigDict(extra="forbid")
 
@@ -64,7 +64,7 @@ class Speed(BaseModel):
     first_sentence_warm_p50: int
     first_sentence_warm_p90: int
     first_sentence_cold_p50: int
-    tokens_per_second_p50: float
+    tokens_per_second_p50: float | None
     warm_turns: int
     cold_turns: int
 

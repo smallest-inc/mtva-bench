@@ -1,0 +1,20 @@
+{
+ "model": "claude-haiku-5-5",
+ "model_hash": "d4bb64ad5f749cae404c0f9b375c5cbfed4749a984811824d89d45db256251f1",
+ "region": "us-east-1",
+ "reference": "gpt-6.1-sol",
+ "measured": "2026-11-10",
+ "calls": 100,
+ "failed": 0,
+ "speed": {
+  "ttft_warm_p50": 587,
+  "ttft_warm_p90": 873,
+  "ttft_cold_p50": 679,
+  "first_sentence_warm_p50": 833,
+  "first_sentence_warm_p90": 1484,
+  "first_sentence_cold_p50": 948,
+  "tokens_per_second_p50": null,
+  "warm_turns": 731,
+  "cold_turns": 100
+ }
+}

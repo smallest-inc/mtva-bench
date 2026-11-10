@@ -1025,7 +1025,7 @@ def latency(
                     f"{s.first_sentence_warm_p50:,}",
                     f"{s.first_sentence_warm_p90:,}",
                     f"{s.first_sentence_cold_p50:,}",
-                    f"{s.tokens_per_second_p50:.0f}",
+                    f"{s.tokens_per_second_p50:.0f}" if s.tokens_per_second_p50 else "-",
                 )
                 if s
                 else ("-",) * 6
@@ -1044,5 +1044,8 @@ def latency(
                 continue
             target = Path("leaderboard/latency") / f"{result.model}.json"
             target.parent.mkdir(parents=True, exist_ok=True)
-            target.write_text(result.model_dump_json(indent=1) + "\n", encoding="utf-8")
+            public = result.model_copy(
+                update={"speed": result.speed.model_copy(update={"tokens_per_second_p50": None})}
+            )
+            target.write_text(public.model_dump_json(indent=1) + "\n", encoding="utf-8")
             console.print(f"[green]✓[/green] {target}", highlight=False)
