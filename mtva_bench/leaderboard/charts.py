@@ -489,11 +489,25 @@ def score_vs_latency(entries: Sequence[Entry]) -> str:
         )
     card.y = bottom + 60
     return card.render(
-        "Every model ran the same calls at its lowest reasoning setting. Latency is the median "
-        "time to first token on warm turns, after the opening one, measured from India over each "
-        "provider's public API, so it includes network distance. Vertical lines are 95% "
-        "intervals of the MTVA Score. The frontier joins the models no other model beats on both "
-        "score and speed."
+        f"Every model runs at its lowest reasoning setting. {latency_note(entries)} Vertical "
+        "lines are 95% intervals of the MTVA Score. The frontier joins the models no other "
+        "model beats on both score and speed."
+    )
+
+
+def latency_note(entries: Sequence[Entry]) -> str:
+    """Where the latency on the charts was measured."""
+    regions = sorted({entry.region for entry in entries if entry.region})
+    if regions and all(entry.region for entry in entries):
+        return (
+            "Latency comes from a separate test: the same recorded calls replayed against every "
+            "model, one request at a time, over its provider's public API, from the cloud "
+            f"region nearest the provider ({', '.join(regions)}). It is the median time to first "
+            "token on warm turns, after the opening one."
+        )
+    return (
+        "Latency is the median time to first token on warm turns, after the opening one, "
+        "measured from India during the benchmark runs, so it includes network distance."
     )
 
 

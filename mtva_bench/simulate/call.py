@@ -16,7 +16,7 @@ from mtva_bench.data.render import render
 from mtva_bench.data.schema import Agent, Scenario
 from mtva_bench.llm.client import LLM
 from mtva_bench.llm.timing import elapsed_ms
-from mtva_bench.llm.types import Message
+from mtva_bench.llm.types import Message, Tool
 from mtva_bench.simulate.agent import TurnResult, agent_tools, agent_turn
 from mtva_bench.simulate.caller import Caller
 from mtva_bench.simulate.channel import deliver
@@ -53,21 +53,7 @@ async def simulate(
     """`on_open` is called once the agent's opening turn is done, which writes the system
     prompt to the provider's cache."""
     start = perf_counter()
-    base = derive_seed(seed, scenario.scenario_id, rollout)
-    prompt, shared = render(agent, scenario, voice_guide)
-    messages = [Message(role="system", content=prompt, cache_prefix=shared)]
-    if model_spec.needs_opening_user_turn:
-        messages.append(Message(role="user", content=OPENING_TURN))
-    conversation = Conversation(
-        scenario_id=scenario.scenario_id,
-        agent_id=agent.agent_id,
-        model=model_spec.name,
-        rollout=rollout,
-        seed=base,
-        messages=messages,
-        end_reason="max_turns",
-        duration_ms=0,
-    )
+    conversation = open_call(agent, scenario, model_spec, voice_guide, seed, rollout)
     try:
         await converse(
             conversation,
@@ -87,6 +73,60 @@ async def simulate(
     return conversation
 
 
+def open_call(
+    agent: Agent,
+    scenario: Scenario,
+    model_spec: ModelSpec,
+    voice_guide: str | None,
+    seed: int,
+    rollout: int,
+) -> Conversation:
+    """The call before anyone speaks: the agent's system prompt, and the opening user message
+    for a model that needs one."""
+    prompt, shared = render(agent, scenario, voice_guide)
+    messages = [Message(role="system", content=prompt, cache_prefix=shared)]
+    if model_spec.needs_opening_user_turn:
+        messages.append(Message(role="user", content=OPENING_TURN))
+    return Conversation(
+        scenario_id=scenario.scenario_id,
+        agent_id=agent.agent_id,
+        model=model_spec.name,
+        rollout=rollout,
+        seed=derive_seed(seed, scenario.scenario_id, rollout),
+        messages=messages,
+        end_reason="max_turns",
+        duration_ms=0,
+    )
+
+
+async def speak(
+    conversation: Conversation,
+    model: LLM,
+    tools: list[Tool],
+    mock: MockTools,
+    model_spec: ModelSpec,
+    turn: int,
+    max_reply_tokens: int | None,
+) -> TurnResult:
+    """The agent's turn, saved on the conversation."""
+    result = await agent_turn(
+        model,
+        conversation.messages,
+        tools,
+        mock,
+        turn,
+        derive_seed(conversation.seed, "agent", turn),
+        model_spec.text_with_tool_calls,
+        max_reply_tokens,
+    )
+    conversation.agent_turns.append(
+        AgentTurn(turn=turn, text=result.text, latency_ms=result.latency_ms)
+    )
+    conversation.model_calls += result.calls
+    conversation.tool_events += result.events
+    return result
+
+
 async def converse(
     conversation: Conversation,
     agent: Agent,
@@ -104,25 +144,10 @@ async def converse(
     protected = [str(value) for value in scenario.caller.facts.values()]
     base = conversation.seed
 
-    async def speak(turn: int) -> TurnResult:
-        result = await agent_turn(
-            model,
-            conversation.messages,
-            tools,
-            mock,
-            turn,
-            derive_seed(base, "agent", turn),
-            model_spec.text_with_tool_calls,
-            max_reply_tokens,
-        )
-        conversation.agent_turns.append(
-            AgentTurn(turn=turn, text=result.text, latency_ms=result.latency_ms)
-        )
-        conversation.model_calls += result.calls
-        conversation.tool_events += result.events
-        return result
+    def agent_speaks(turn: int):
+        return speak(conversation, model, tools, mock, model_spec, turn, max_reply_tokens)
 
-    result = await speak(0)
+    result = await agent_speaks(0)
     on_open()
     for turn in range(max_turns):
         if result.context_limit:
@@ -151,7 +176,7 @@ async def converse(
             )
         )
         conversation.messages += [Message(role="user", content=fragment) for fragment in heard]
-        result = await speak(turn + 1)
+        result = await agent_speaks(turn + 1)
         if result.context_limit:
             conversation.end_reason = "context_limit"
             return

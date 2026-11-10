@@ -85,8 +85,8 @@
 <text x="724.1" y="445.9" fill="#55534e" font-size="14.0" text-anchor="start" font-weight="400">GPT-5.6 Luna</text>
 <text x="656.8" y="567.3" fill="#55534e" font-size="14.0" text-anchor="start" font-weight="400">Gemini 3.5 Flash-Lite</text>
 <text x="733.6" y="597.2" fill="#55534e" font-size="14.0" text-anchor="start" font-weight="400">GPT-6 Luna</text>
-<text x="64.0" y="778.0" text-anchor="start"><tspan fill="#55534e" font-size="13.5" font-weight="700">Method.</tspan><tspan fill="#8a877f" font-size="13.5" font-weight="400" dx="5">Every model ran the same calls at its lowest reasoning setting. Latency is the median time to first token on warm turns, after the opening one,</tspan></text>
-<text x="64.0" y="799.0" fill="#8a877f" font-size="13.5" text-anchor="start" font-weight="400">measured from India over each provider&#x27;s public API, so it includes network distance. Vertical lines are 95% intervals of the MTVA Score. The frontier</text>
-<text x="64.0" y="820.0" fill="#8a877f" font-size="13.5" text-anchor="start" font-weight="400">joins the models no other model beats on both score and speed.</text>
+<text x="64.0" y="778.0" text-anchor="start"><tspan fill="#55534e" font-size="13.5" font-weight="700">Method.</tspan><tspan fill="#8a877f" font-size="13.5" font-weight="400" dx="5">Every model runs at its lowest reasoning setting. Latency is the median time to first token on warm turns, after the opening one, measured</tspan></text>
+<text x="64.0" y="799.0" fill="#8a877f" font-size="13.5" text-anchor="start" font-weight="400">from India during the benchmark runs, so it includes network distance. Vertical lines are 95% intervals of the MTVA Score. The frontier joins the</text>
+<text x="64.0" y="820.0" fill="#8a877f" font-size="13.5" text-anchor="start" font-weight="400">models no other model beats on both score and speed.</text>
 <text x="1136.0" y="820.0" fill="#111111" font-size="16" text-anchor="end" font-weight="700">smallest.ai</text>
 </svg>

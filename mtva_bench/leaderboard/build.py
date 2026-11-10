@@ -6,16 +6,17 @@ would not mean the same thing. Republishing the run under the current protocol f
 """
 
 import json
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from pathlib import Path
 
 from pydantic import ValidationError
 
 from mtva_bench.config import Benchmark
 from mtva_bench.run.arena import ArenaSummary, shared_inputs_for
+from mtva_bench.run.latency import LatencyResult
 from mtva_bench.run.score import Summary, protocol, publish_problems
 from mtva_bench.scoring.aggregate import Scores
-from mtva_bench.scoring.latency import Latency
+from mtva_bench.scoring.latency import Latency, Speed
 
 
 class LeaderboardError(ValueError):
@@ -24,11 +25,13 @@ class LeaderboardError(ValueError):
 
 @dataclass(frozen=True)
 class Entry:
-    """A published run with the scores and latency the leaderboard needs."""
+    """A published run with the scores and latency the leaderboard needs. `region` names where
+    the latency test ran; None when the latency comes from the benchmark run itself."""
 
     summary: Summary
     scores: Scores
-    latency: Latency
+    latency: Latency | Speed
+    region: str | None = None
 
     @property
     def label(self) -> str:
@@ -81,7 +84,35 @@ def load_entries(runs_dir: Path, benchmark: Benchmark) -> list[Entry]:
         raise LeaderboardError("refused:\n  " + "\n  ".join(refused))
     if not entries:
         raise LeaderboardError(f"no published runs in {runs_dir}")
+    entries = with_latency_test(entries, runs_dir.parent / "latency")
     return sorted(entries, key=lambda entry: -entry.scores.mtva_score.value)
+
+
+def with_latency_test(entries: list[Entry], latency_dir: Path) -> list[Entry]:
+    """The entries with their latency from the latency test, once it has published results.
+    Every model then needs one made with the spec it was scored with: latency from the test
+    and from benchmark runs is never mixed on one leaderboard."""
+    tested = {
+        path.stem: LatencyResult.model_validate_json(path.read_text(encoding="utf-8"))
+        for path in sorted(latency_dir.glob("*.json"))
+    }
+    if not tested:
+        return entries
+    refused = []
+    for entry in entries:
+        result = tested.get(entry.summary.run)
+        if result is None or result.speed is None:
+            refused.append(f"{entry.summary.run}: no latency test result")
+        elif result.model_hash != entry.summary.provenance.model_hash:
+            refused.append(f"{entry.summary.run}: latency tested with another model spec")
+    if refused:
+        raise LeaderboardError("latency refused:\n  " + "\n  ".join(refused))
+    return [
+        replace(
+            entry, latency=tested[entry.summary.run].speed, region=tested[entry.summary.run].region
+        )
+        for entry in entries
+    ]
 
 
 def load_arena(arena_dir: Path, benchmark: Benchmark) -> list[ArenaSummary]:
