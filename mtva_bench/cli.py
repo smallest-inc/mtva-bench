@@ -11,7 +11,15 @@ from rich.progress import BarColumn, MofNCompleteColumn, Progress, TextColumn
 from rich.table import Table
 
 from mtva_bench import __version__
-from mtva_bench.config import ConfigError, RunConfig, RunOptions, load_benchmark, load_run
+from mtva_bench.config import (
+    ConfigError,
+    ModelSpec,
+    RunConfig,
+    RunOptions,
+    load_benchmark,
+    load_model,
+    load_run,
+)
 from mtva_bench.data import (
     Bundle,
     DataError,
@@ -48,6 +56,7 @@ from mtva_bench.run.arena import (
     summarize_arena,
 )
 from mtva_bench.run.evaluate import EvaluateResult
+from mtva_bench.run.latency import LatencyResult, check_scored, latency_stage
 from mtva_bench.run.score import Summary, publish_problems, run_config, score_stage, summarize
 from mtva_bench.run.store import StoredConversation, StoredVerdict
 from mtva_bench.scoring.aggregate import SLICES, CallScore, head_to_head
@@ -886,3 +895,154 @@ def arena(
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(summary.model_dump_json(indent=1) + "\n", encoding="utf-8")
         console.print(f"[green]✓[/green] {target}", highlight=False)
+
+
+@cli.command(short_help="Time models on the same recorded calls, one request at a time.")
+@click.argument(
+    "model_paths",
+    metavar="MODEL.yaml...",
+    nargs=-1,
+    required=True,
+    type=click.Path(path_type=Path, dir_okay=False, exists=True),
+)
+@click.option(
+    "--region",
+    required=True,
+    metavar="NAME",
+    help="Where the test runs, as a label for the result, e.g. us-east-1.",
+)
+@click.option(
+    "--reference",
+    "reference_dir",
+    type=click.Path(path_type=Path, file_okay=False, exists=True),
+    default=Path("runs/gpt-6.1-sol"),
+    show_default=True,
+    help="The run whose recorded calls are replayed.",
+)
+@data_option
+@benchmark_option
+@click.option(
+    "--runs-dir",
+    type=click.Path(path_type=Path, file_okay=False),
+    default=Path("runs"),
+    show_default=True,
+    help="Where replays are saved, under latency/<region>/<model>/.",
+)
+@click.option(
+    "--limit",
+    type=int,
+    callback=at_least_one,
+    metavar="N",
+    help="Replay only the first N calls, for a quick check.",
+)
+@click.option(
+    "--publish",
+    is_flag=True,
+    help="Also copy each result to leaderboard/latency/; needs 99% of calls replayed.",
+)
+def latency(
+    model_paths: tuple[Path, ...],
+    region: str,
+    reference_dir: Path,
+    data_dir: Path | None,
+    benchmark_path: Path,
+    runs_dir: Path,
+    limit: int | None,
+    publish: bool,
+) -> None:
+    """Replay one recorded call per agent from REFERENCE against each model: the caller's lines
+    verbatim, the model's own replies and tool calls building the history, one request at a
+    time. Measures time to first token, to the first spoken sentence, and generation speed.
+    Different models run in parallel. Each model file must match the spec its published summary
+    was scored with. Running again continues where it stopped.
+
+    \b
+    Examples:
+      mtva-bench latency models/electron-2.0.yaml --region ap-south-1 --limit 3
+      mtva-bench latency models/gpt-6.1-sol.yaml models/claude-opus-5-5.yaml --region us-east-1
+    """
+    leaderboard_runs = Path("leaderboard/runs")
+    try:
+        benchmark = load_benchmark(benchmark_path)
+        bundle = open_bundle(data_dir, benchmark_path)
+        verify(bundle, benchmark.data)
+        specs = [load_model(path) for path in model_paths]
+        for spec in specs:
+            check_scored(spec, leaderboard_runs)
+    except (ConfigError, DataError) as error:
+        raise click.ClickException(str(error)) from error
+
+    with Progress(
+        TextColumn("{task.description}"), BarColumn(), MofNCompleteColumn(), console=console
+    ) as progress:
+
+        async def one(spec: ModelSpec) -> LatencyResult:
+            task = progress.add_task(f"{spec.name:24}", total=None)
+            async with LLMClient(spec, 1) as model:
+                return await latency_stage(
+                    spec,
+                    benchmark,
+                    bundle,
+                    model,
+                    reference_dir,
+                    region,
+                    runs_dir,
+                    limit=limit,
+                    on_start=lambda total: progress.update(task, total=total),
+                    on_done=lambda _: progress.advance(task),
+                )
+
+        async def go():
+            return await asyncio.gather(*(one(spec) for spec in specs))
+
+        try:
+            results = asyncio.run(go())
+        except (ConfigError, RunLockedError, LLMError) as error:
+            raise click.ClickException(str(error)) from error
+
+    table = Table(
+        "model",
+        "calls",
+        "first token p50",
+        "p90",
+        "first sentence p50",
+        "p90",
+        "cold",
+        "tok/s",
+        title=f"Latency from {region}, in ms",
+    )
+    for column in table.columns[1:]:
+        column.justify = "right"
+    for result in results:
+        s = result.speed
+        table.add_row(
+            result.model,
+            f"{result.calls}" + (f" [red]({result.failed} failed)[/red]" if result.failed else ""),
+            *(
+                (
+                    f"{s.ttft_warm_p50:,}",
+                    f"{s.ttft_warm_p90:,}",
+                    f"{s.first_sentence_warm_p50:,}",
+                    f"{s.first_sentence_warm_p90:,}",
+                    f"{s.first_sentence_cold_p50:,}",
+                    f"{s.tokens_per_second_p50:.0f}",
+                )
+                if s
+                else ("-",) * 6
+            ),
+        )
+    console.print(table)
+    if publish:
+        for result in results:
+            planned = result.calls + result.failed
+            if result.speed is None or result.calls < 0.99 * planned or limit:
+                console.print(
+                    f"[yellow]![/yellow] {result.model} not published: needs every call, "
+                    "and no --limit",
+                    highlight=False,
+                )
+                continue
+            target = Path("leaderboard/latency") / f"{result.model}.json"
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_text(result.model_dump_json(indent=1) + "\n", encoding="utf-8")
+            console.print(f"[green]✓[/green] {target}", highlight=False)
