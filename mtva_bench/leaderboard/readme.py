@@ -6,6 +6,7 @@ from collections.abc import Sequence
 
 from mtva_bench.leaderboard.build import Entry
 from mtva_bench.leaderboard.charts import highlighted
+from mtva_bench.scoring.latency import Speed
 
 CAPABILITY_COLUMNS = (
     ("task_completion", "Task"),
@@ -23,7 +24,7 @@ def table(entries: Sequence[Entry]) -> str:
     """The leaderboard, best MTVA Score first; the highlighted organization's rows in bold."""
     header = ["#", "Model", "Reasoning", "MTVA Score"]
     header += [name for _, name in CAPABILITY_COLUMNS]
-    header += ["First token"]
+    header += ["First token", "First sentence"]
     lines = [
         "| " + " | ".join(header) + " |",
         "|" + "|".join([":-:", ":--", ":--"] + ["--:"] * (len(header) - 3)) + "|",
@@ -40,7 +41,13 @@ def table(entries: Sequence[Entry]) -> str:
             entry.reasoning,
             bold(f"{scores.mtva_score.value:.1f}"),
             *(f"{scores.capabilities[key].value:.1f}" for key, _ in CAPABILITY_COLUMNS),
-            bold(f"{entry.latency.ttft_warm_p50:,} ms"),
+            bold(f"{entry.latency.ttft_warm_p50:,} / {entry.latency.ttft_warm_p90:,} ms"),
+            bold(
+                f"{entry.latency.first_sentence_warm_p50:,} / "
+                f"{entry.latency.first_sentence_warm_p90:,} ms"
+            )
+            if isinstance(entry.latency, Speed)
+            else "-",
         ]
         lines.append("| " + " | ".join(cells) + " |")
     return "\n".join(lines)

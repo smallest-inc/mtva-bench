@@ -1,0 +1,20 @@
+{
+ "model": "claude-fable-5-1",
+ "model_hash": "386edb6f65db51668ffa5cf8483d7af741e331cf2699321da57e1e7e10af89b1",
+ "region": "us-east-1",
+ "reference": "gpt-6.1-sol",
+ "measured": "2026-11-10",
+ "calls": 100,
+ "failed": 0,
+ "speed": {
+  "ttft_warm_p50": 866,
+  "ttft_warm_p90": 2779,
+  "ttft_cold_p50": 608,
+  "first_sentence_warm_p50": 1888,
+  "first_sentence_warm_p90": 4280,
+  "first_sentence_cold_p50": 1350,
+  "tokens_per_second_p50": null,
+  "warm_turns": 739,
+  "cold_turns": 100
+ }
+}

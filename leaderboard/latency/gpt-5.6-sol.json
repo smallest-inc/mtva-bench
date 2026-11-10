@@ -1,0 +1,20 @@
+{
+ "model": "gpt-5.6-sol",
+ "model_hash": "c2c45ae4a681dff1cefbb054853196d607a6162e87e6f57f297d99056177d844",
+ "region": "us-east-1",
+ "reference": "gpt-6.1-sol",
+ "measured": "2026-11-10",
+ "calls": 100,
+ "failed": 0,
+ "speed": {
+  "ttft_warm_p50": 1690,
+  "ttft_warm_p90": 5908,
+  "ttft_cold_p50": 1194,
+  "first_sentence_warm_p50": 2239,
+  "first_sentence_warm_p90": 6967,
+  "first_sentence_cold_p50": 1524,
+  "tokens_per_second_p50": null,
+  "warm_turns": 775,
+  "cold_turns": 100
+ }
+}

@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="944" viewBox="0 0 1200 944" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" role="img">
+<title>Time to first sentence</title>
+<desc>Each model&#x27;s time to its first complete spoken sentence and to its first token.</desc>
+<rect x="0.5" y="0.5" width="1199" height="943" rx="18" fill="#fbfbf9" stroke="#ebe9e4"/>
+<circle cx="68" cy="67" r="4.5" fill="#2a78d6"/>
+<text x="80.0" y="72.0" fill="#8a877f" font-size="13" text-anchor="start" font-weight="600" letter-spacing="1.6">MTVA-BENCH · LATENCY TEST</text>
+<text x="64.0" y="124.0" fill="#111111" font-size="36" text-anchor="start" font-weight="700" letter-spacing="-0.9">Time to first sentence</text>
+<text x="64.0" y="160.0" fill="#55534e" font-size="17" text-anchor="start" font-weight="400">When the caller first hears the agent, 90th percentile of warm turns. The tick marks the first token.</text>
+<line x1="248.8" y1="206.0" x2="248.8" y2="756.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="248.8" y="778.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400" font-variant-numeric="tabular-nums">0</text>
+<line x1="376.7" y1="206.0" x2="376.7" y2="756.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="376.7" y="778.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400" font-variant-numeric="tabular-nums">2 s</text>
+<line x1="504.5" y1="206.0" x2="504.5" y2="756.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="504.5" y="778.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400" font-variant-numeric="tabular-nums">4 s</text>
+<line x1="632.4" y1="206.0" x2="632.4" y2="756.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="632.4" y="778.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400" font-variant-numeric="tabular-nums">6 s</text>
+<line x1="760.3" y1="206.0" x2="760.3" y2="756.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="760.3" y="778.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400" font-variant-numeric="tabular-nums">8 s</text>
+<line x1="888.1" y1="206.0" x2="888.1" y2="756.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="888.1" y="778.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400" font-variant-numeric="tabular-nums">10 s</text>
+<line x1="1016.0" y1="206.0" x2="1016.0" y2="756.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="1016.0" y="778.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400" font-variant-numeric="tabular-nums">12 s</text>
+<rect x="52.0" y="214.0" width="1096.0" height="32.0" rx="8" fill="#e3edf9"/>
+<path d="M248.8,220.0 H279.6 Q284.6,220.0 284.6,225.0 V235.0 Q284.6,240.0 279.6,240.0 H248.8 Z" fill="#2a78d6"/>
+<line x1="263.2" y1="217.0" x2="263.2" y2="243.0" stroke="#111111" stroke-width="2" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="224.8" y="235.0" fill="#111111" font-size="15" text-anchor="end" font-weight="700">Electron 2.0</text>
+<text x="294.6" y="235.0" text-anchor="start"><tspan fill="#111111" font-size="15" font-weight="700">559 ms</tspan><tspan fill="#8a877f" font-size="12.5" font-weight="400" dx="8">first token 225</tspan></text>
+<path d="M248.8,256.0 H338.7 Q343.7,256.0 343.7,261.0 V271.0 Q343.7,276.0 338.7,276.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="304.6" y1="253.0" x2="304.6" y2="279.0" stroke="#111111" stroke-width="2" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="224.8" y="271.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">Claude Haiku 5.5</text>
+<text x="353.7" y="271.0" text-anchor="start"><tspan fill="#55534e" font-size="15" font-weight="400">1,484 ms</tspan><tspan fill="#8a877f" font-size="12.5" font-weight="400" dx="8">first token 873</tspan></text>
+<path d="M248.8,292.0 H375.2 Q380.2,292.0 380.2,297.0 V307.0 Q380.2,312.0 375.2,312.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="303.2" y1="289.0" x2="303.2" y2="315.0" stroke="#111111" stroke-width="2" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="224.8" y="307.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-4.1 mini</text>
+<text x="390.2" y="307.0" text-anchor="start"><tspan fill="#55534e" font-size="15" font-weight="400">2,055 ms</tspan><tspan fill="#8a877f" font-size="12.5" font-weight="400" dx="8">first token 850</tspan></text>
+<path d="M248.8,328.0 H380.6 Q385.6,328.0 385.6,333.0 V343.0 Q385.6,348.0 380.6,348.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="311.3" y1="325.0" x2="311.3" y2="351.0" stroke="#111111" stroke-width="2" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="224.8" y="343.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-4.1</text>
+<text x="395.6" y="343.0" text-anchor="start"><tspan fill="#55534e" font-size="15" font-weight="400">2,139 ms</tspan><tspan fill="#8a877f" font-size="12.5" font-weight="400" dx="8">first token 978</tspan></text>
+<path d="M248.8,364.0 H407.5 Q412.5,364.0 412.5,369.0 V379.0 Q412.5,384.0 407.5,384.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="342.4" y1="361.0" x2="342.4" y2="387.0" stroke="#111111" stroke-width="2" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="224.8" y="379.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">Claude Sonnet 5.5</text>
+<text x="422.5" y="379.0" text-anchor="start"><tspan fill="#55534e" font-size="15" font-weight="400">2,560 ms</tspan><tspan fill="#8a877f" font-size="12.5" font-weight="400" dx="8">first token 1,463</tspan></text>
+<path d="M248.8,400.0 H423.1 Q428.1,400.0 428.1,405.0 V415.0 Q428.1,420.0 423.1,420.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="342.1" y1="397.0" x2="342.1" y2="423.0" stroke="#111111" stroke-width="2" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="224.8" y="415.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-6.1 Terra</text>
+<text x="438.1" y="415.0" text-anchor="start"><tspan fill="#55534e" font-size="15" font-weight="400">2,804 ms</tspan><tspan fill="#8a877f" font-size="12.5" font-weight="400" dx="8">first token 1,459</tspan></text>
+<path d="M248.8,436.0 H429.6 Q434.6,436.0 434.6,441.0 V451.0 Q434.6,456.0 429.6,456.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="328.9" y1="433.0" x2="328.9" y2="459.0" stroke="#111111" stroke-width="2" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="224.8" y="451.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">Gemini 3.5 Flash-Lite</text>
+<text x="444.6" y="451.0" text-anchor="start"><tspan fill="#55534e" font-size="15" font-weight="400">2,906 ms</tspan><tspan fill="#8a877f" font-size="12.5" font-weight="400" dx="8">first token 1,252</tspan></text>
+<path d="M248.8,472.0 H493.0 Q498.0,472.0 498.0,477.0 V487.0 Q498.0,492.0 493.0,492.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="322.7" y1="469.0" x2="322.7" y2="495.0" stroke="#111111" stroke-width="2" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="224.8" y="487.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-5.6 Terra</text>
+<text x="508.0" y="487.0" text-anchor="start"><tspan fill="#55534e" font-size="15" font-weight="400">3,897 ms</tspan><tspan fill="#8a877f" font-size="12.5" font-weight="400" dx="8">first token 1,155</tspan></text>
+<path d="M248.8,508.0 H504.0 Q509.0,508.0 509.0,513.0 V523.0 Q509.0,528.0 504.0,528.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="345.6" y1="505.0" x2="345.6" y2="531.0" stroke="#111111" stroke-width="2" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="224.8" y="523.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-5.6 Luna</text>
+<text x="519.0" y="523.0" text-anchor="start"><tspan fill="#55534e" font-size="15" font-weight="400">4,069 ms</tspan><tspan fill="#8a877f" font-size="12.5" font-weight="400" dx="8">first token 1,514</tspan></text>
+<path d="M248.8,544.0 H517.4 Q522.4,544.0 522.4,549.0 V559.0 Q522.4,564.0 517.4,564.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="426.5" y1="541.0" x2="426.5" y2="567.0" stroke="#111111" stroke-width="2" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="224.8" y="559.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">Claude Fable 5.1</text>
+<text x="532.4" y="559.0" text-anchor="start"><tspan fill="#55534e" font-size="15" font-weight="400">4,280 ms</tspan><tspan fill="#8a877f" font-size="12.5" font-weight="400" dx="8">first token 2,779</tspan></text>
+<path d="M248.8,580.0 H615.2 Q620.2,580.0 620.2,585.0 V595.0 Q620.2,600.0 615.2,600.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="415.6" y1="577.0" x2="415.6" y2="603.0" stroke="#111111" stroke-width="2" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="224.8" y="595.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-6.1 Sol</text>
+<text x="630.2" y="595.0" text-anchor="start"><tspan fill="#55534e" font-size="15" font-weight="400">5,809 ms</tspan><tspan fill="#8a877f" font-size="12.5" font-weight="400" dx="8">first token 2,608</tspan></text>
+<path d="M248.8,616.0 H638.0 Q643.0,616.0 643.0,621.0 V631.0 Q643.0,636.0 638.0,636.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="540.7" y1="613.0" x2="540.7" y2="639.0" stroke="#111111" stroke-width="2" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="224.8" y="631.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-6 Luna</text>
+<text x="653.0" y="631.0" text-anchor="start"><tspan fill="#55534e" font-size="15" font-weight="400">6,166 ms</tspan><tspan fill="#8a877f" font-size="12.5" font-weight="400" dx="8">first token 4,566</tspan></text>
+<path d="M248.8,652.0 H651.7 Q656.7,652.0 656.7,657.0 V667.0 Q656.7,672.0 651.7,672.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="403.9" y1="649.0" x2="403.9" y2="675.0" stroke="#111111" stroke-width="2" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="224.8" y="667.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">Claude Opus 5.5</text>
+<text x="666.7" y="667.0" text-anchor="start"><tspan fill="#55534e" font-size="15" font-weight="400">6,380 ms</tspan><tspan fill="#8a877f" font-size="12.5" font-weight="400" dx="8">first token 2,426</tspan></text>
+<path d="M248.8,688.0 H689.2 Q694.2,688.0 694.2,693.0 V703.0 Q694.2,708.0 689.2,708.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="626.5" y1="685.0" x2="626.5" y2="711.0" stroke="#111111" stroke-width="2" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="224.8" y="703.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">GPT-5.6 Sol</text>
+<text x="704.2" y="703.0" text-anchor="start"><tspan fill="#55534e" font-size="15" font-weight="400">6,967 ms</tspan><tspan fill="#8a877f" font-size="12.5" font-weight="400" dx="8">first token 5,908</tspan></text>
+<path d="M248.8,724.0 H925.5 Q930.5,724.0 930.5,729.0 V739.0 Q930.5,744.0 925.5,744.0 H248.8 Z" fill="#d9d6cf"/>
+<line x1="658.4" y1="721.0" x2="658.4" y2="747.0" stroke="#111111" stroke-width="2" stroke-opacity="0.75" stroke-linecap="round"/>
+<text x="224.8" y="739.0" fill="#55534e" font-size="15" text-anchor="end" font-weight="400">Gemini 3.8 Flash</text>
+<text x="940.5" y="739.0" text-anchor="start"><tspan fill="#55534e" font-size="15" font-weight="400">10,663 ms</tspan><tspan fill="#8a877f" font-size="12.5" font-weight="400" dx="8">first token 6,407</tspan></text>
+<line x1="248.8" y1="206.0" x2="248.8" y2="756.0" stroke="#d3d0c9" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="64.0" y="824.0" text-anchor="start"><tspan fill="#55534e" font-size="13.5" font-weight="700">Method.</tspan><tspan fill="#8a877f" font-size="13.5" font-weight="400" dx="5">Text-to-speech starts once the first complete sentence arrives, so this is when the caller first hears the agent. The same recorded calls were</tspan></text>
+<text x="64.0" y="845.0" fill="#8a877f" font-size="13.5" text-anchor="start" font-weight="400">replayed against every model, one request at a time, over its provider&#x27;s public API, from the cloud region nearest the provider (Mumbai or Virginia).</text>
+<text x="64.0" y="866.0" fill="#8a877f" font-size="13.5" text-anchor="start" font-weight="400">Tool steps before the agent speaks count; the mock tools&#x27; own time does not. 90th percentile of warm turns, after the opening one: 9 turns in 10 are</text>
+<text x="64.0" y="887.0" fill="#8a877f" font-size="13.5" text-anchor="start" font-weight="400">faster.</text>
+<text x="1136.0" y="887.0" fill="#111111" font-size="16" text-anchor="end" font-weight="700">smallest.ai</text>
+</svg>

@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="877" viewBox="0 0 1200 877" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="898" viewBox="0 0 1200 898" font-family="-apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" role="img">
 <title>Quality against speed</title>
 <desc>Each model&#x27;s MTVA Score against its warm time to first token, with the Pareto frontier.</desc>
-<rect x="0.5" y="0.5" width="1199" height="876" rx="18" fill="#fbfbf9" stroke="#ebe9e4"/>
+<rect x="0.5" y="0.5" width="1199" height="897" rx="18" fill="#fbfbf9" stroke="#ebe9e4"/>
 <circle cx="68" cy="67" r="4.5" fill="#2a78d6"/>
 <text x="80.0" y="72.0" fill="#8a877f" font-size="13" text-anchor="start" font-weight="600" letter-spacing="1.6">MTVA-BENCH · 15 MODELS</text>
 <text x="64.0" y="124.0" fill="#111111" font-size="36" text-anchor="start" font-weight="700" letter-spacing="-0.9">Quality against speed</text>
-<text x="64.0" y="160.0" fill="#55534e" font-size="17" text-anchor="start" font-weight="400">MTVA Score against median time to first token. Up and to the left is better.</text>
+<text x="64.0" y="160.0" fill="#55534e" font-size="17" text-anchor="start" font-weight="400">MTVA Score against time to first token, 90th percentile. Up and to the left is better.</text>
 <line x1="108.0" y1="682.0" x2="1136.0" y2="682.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
 <text x="96.0" y="687.0" fill="#8a877f" font-size="13" text-anchor="end" font-weight="400" font-variant-numeric="tabular-nums">40</text>
 <line x1="108.0" y1="596.5" x2="1136.0" y2="596.5" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
@@ -19,74 +19,80 @@
 <line x1="108.0" y1="254.7" x2="1136.0" y2="254.7" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
 <text x="96.0" y="259.7" fill="#8a877f" font-size="13" text-anchor="end" font-weight="400" font-variant-numeric="tabular-nums">90</text>
 <line x1="108.0" y1="212.0" x2="108.0" y2="682.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
-<text x="108.0" y="706.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400">200 ms</text>
-<line x1="237.5" y1="212.0" x2="237.5" y2="682.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
-<text x="237.5" y="706.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400">300 ms</text>
-<line x1="400.6" y1="212.0" x2="400.6" y2="682.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
-<text x="400.6" y="706.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400">500 ms</text>
+<text x="108.0" y="706.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400">100 ms</text>
+<line x1="262.7" y1="212.0" x2="262.7" y2="682.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="262.7" y="706.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400">200 ms</text>
+<line x1="353.2" y1="212.0" x2="353.2" y2="682.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="353.2" y="706.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400">300 ms</text>
+<line x1="467.3" y1="212.0" x2="467.3" y2="682.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="467.3" y="706.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400">500 ms</text>
 <line x1="622.0" y1="212.0" x2="622.0" y2="682.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
 <text x="622.0" y="706.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400">1 s</text>
-<line x1="843.4" y1="212.0" x2="843.4" y2="682.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
-<text x="843.4" y="706.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400">2 s</text>
-<line x1="972.9" y1="212.0" x2="972.9" y2="682.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
-<text x="972.9" y="706.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400">3 s</text>
+<line x1="776.7" y1="212.0" x2="776.7" y2="682.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="776.7" y="706.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400">2 s</text>
+<line x1="867.2" y1="212.0" x2="867.2" y2="682.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="867.2" y="706.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400">3 s</text>
+<line x1="981.3" y1="212.0" x2="981.3" y2="682.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
+<text x="981.3" y="706.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400">5 s</text>
 <line x1="1136.0" y1="212.0" x2="1136.0" y2="682.0" stroke="#ebe9e4" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
-<text x="1136.0" y="706.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400">5 s</text>
+<text x="1136.0" y="706.0" fill="#8a877f" font-size="13" text-anchor="middle" font-weight="400">10 s</text>
 <line x1="108.0" y1="682.0" x2="1136.0" y2="682.0" stroke="#d3d0c9" stroke-width="1" stroke-opacity="1" stroke-linecap="round"/>
-<text x="622.0" y="734.0" fill="#55534e" font-size="14" text-anchor="middle" font-weight="400">Time to first token, median of warm turns (log scale)</text>
+<text x="622.0" y="734.0" fill="#55534e" font-size="14" text-anchor="middle" font-weight="400">Time to first token, 90th percentile of warm turns (log scale)</text>
 <text transform="translate(62 447.0) rotate(-90)" fill="#55534e" font-size="14" text-anchor="middle">MTVA Score</text>
-<path d="M242.8,352.1 L692.5,351.3 L695.6,310.3 L710.9,282.9 L855.3,281.2" fill="none" stroke="#a29e96" stroke-width="1.5" stroke-opacity="0.6" stroke-linejoin="round"/>
-<line x1="855.3" y1="297.5" x2="855.3" y2="265.0" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
-<line x1="710.9" y1="299.2" x2="710.9" y2="266.7" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
-<line x1="787.5" y1="301.7" x2="787.5" y2="272.7" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
-<line x1="794.3" y1="316.3" x2="794.3" y2="286.3" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
-<line x1="793.9" y1="316.3" x2="793.9" y2="291.5" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
-<line x1="695.6" y1="323.1" x2="695.6" y2="296.6" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
-<line x1="692.5" y1="366.7" x2="692.5" y2="335.9" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
-<line x1="242.8" y1="371.8" x2="242.8" y2="332.5" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
-<line x1="945.5" y1="381.2" x2="945.5" y2="350.4" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
-<line x1="539.8" y1="384.6" x2="539.8" y2="349.6" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
-<line x1="712.1" y1="459.0" x2="712.1" y2="422.2" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
-<line x1="545.9" y1="485.5" x2="545.9" y2="447.9" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
-<line x1="549.5" y1="520.5" x2="549.5" y2="480.3" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
-<line x1="644.8" y1="577.7" x2="644.8" y2="546.1" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
-<line x1="721.6" y1="611.9" x2="721.6" y2="571.8" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
-<circle cx="855.3" cy="281.2" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
-<circle cx="710.9" cy="282.9" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
-<circle cx="787.5" cy="287.2" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
-<circle cx="794.3" cy="300.9" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
-<circle cx="793.9" cy="304.3" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
-<circle cx="695.6" cy="310.3" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
-<circle cx="692.5" cy="351.3" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
-<circle cx="242.8" cy="352.1" r="16" fill="#2a78d6" opacity="0.14"/>
-<circle cx="242.8" cy="352.1" r="7.5" fill="#2a78d6" stroke="#fbfbf9" stroke-width="2.5"/>
-<circle cx="945.5" cy="365.0" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
-<circle cx="539.8" cy="366.7" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
-<circle cx="712.1" cy="441.0" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
-<circle cx="545.9" cy="465.8" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
-<circle cx="549.5" cy="500.8" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
-<circle cx="644.8" cy="562.4" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
-<circle cx="721.6" cy="592.3" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
-<text transform="translate(467.6 343.7) rotate(-0.1)" fill="#8a877f" font-size="13" text-anchor="middle">Pareto frontier</text>
-<line x1="787.5" y1="278.2" x2="787.5" y2="274.4" stroke="#8a877f" stroke-width="1" stroke-opacity="0.6" stroke-linecap="round"/>
-<line x1="793.9" y1="313.3" x2="793.9" y2="317.1" stroke="#8a877f" stroke-width="1" stroke-opacity="0.6" stroke-linecap="round"/>
-<text x="222.8" y="357.7" fill="#111111" font-size="16.0" text-anchor="end" font-weight="700">Electron 2.0</text>
-<text x="787.5" y="271.3" fill="#55534e" font-size="14.0" text-anchor="middle" font-weight="400">GPT-5.6 Sol</text>
-<text x="804.7" y="310.6" fill="#55534e" font-size="14.0" text-anchor="start" font-weight="400">Claude Opus 5.5</text>
-<text x="793.9" y="330.0" fill="#55534e" font-size="14.0" text-anchor="middle" font-weight="400">Claude Sonnet 5.5</text>
-<text x="683.6" y="315.2" fill="#55534e" font-size="14.0" text-anchor="end" font-weight="400">Claude Fable 5.1</text>
-<text x="698.9" y="287.8" fill="#55534e" font-size="14.0" text-anchor="end" font-weight="400">GPT-6.1 Terra</text>
-<text x="704.5" y="356.2" fill="#55534e" font-size="14.0" text-anchor="start" font-weight="400">GPT-5.6 Terra</text>
-<text x="557.9" y="470.7" fill="#55534e" font-size="14.0" text-anchor="start" font-weight="400">GPT-4.1</text>
-<text x="561.5" y="505.7" fill="#55534e" font-size="14.0" text-anchor="start" font-weight="400">GPT-4.1 mini</text>
-<text x="867.3" y="286.1" fill="#55534e" font-size="14.0" text-anchor="start" font-weight="400">GPT-6.1 Sol</text>
-<text x="957.5" y="369.9" fill="#55534e" font-size="14.0" text-anchor="start" font-weight="400">Gemini 3.8 Flash</text>
-<text x="551.8" y="371.6" fill="#55534e" font-size="14.0" text-anchor="start" font-weight="400">Claude Haiku 5.5</text>
-<text x="724.1" y="445.9" fill="#55534e" font-size="14.0" text-anchor="start" font-weight="400">GPT-5.6 Luna</text>
-<text x="656.8" y="567.3" fill="#55534e" font-size="14.0" text-anchor="start" font-weight="400">Gemini 3.5 Flash-Lite</text>
-<text x="733.6" y="597.2" fill="#55534e" font-size="14.0" text-anchor="start" font-weight="400">GPT-6 Luna</text>
-<text x="64.0" y="778.0" text-anchor="start"><tspan fill="#55534e" font-size="13.5" font-weight="700">Method.</tspan><tspan fill="#8a877f" font-size="13.5" font-weight="400" dx="5">Every model runs at its lowest reasoning setting. Latency is the median time to first token on warm turns, after the opening one, measured</tspan></text>
-<text x="64.0" y="799.0" fill="#8a877f" font-size="13.5" text-anchor="start" font-weight="400">from India during the benchmark runs, so it includes network distance. Vertical lines are 95% intervals of the MTVA Score. The frontier joins the</text>
-<text x="64.0" y="820.0" fill="#8a877f" font-size="13.5" text-anchor="start" font-weight="400">models no other model beats on both score and speed.</text>
-<text x="1136.0" y="820.0" fill="#111111" font-size="16" text-anchor="end" font-weight="700">smallest.ai</text>
+<path d="M289.0,352.1 L654.2,351.3 L706.3,282.9 L836.0,281.2" fill="none" stroke="#a29e96" stroke-width="1.5" stroke-opacity="0.6" stroke-linejoin="round"/>
+<line x1="836.0" y1="297.5" x2="836.0" y2="265.0" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
+<line x1="706.3" y1="299.2" x2="706.3" y2="266.7" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
+<line x1="1018.5" y1="301.7" x2="1018.5" y2="272.7" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
+<line x1="819.8" y1="316.3" x2="819.8" y2="286.3" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
+<line x1="706.9" y1="316.3" x2="706.9" y2="291.5" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
+<line x1="850.2" y1="323.1" x2="850.2" y2="296.6" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
+<line x1="654.2" y1="366.7" x2="654.2" y2="335.9" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
+<line x1="289.0" y1="371.8" x2="289.0" y2="332.5" stroke="#2a78d6" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
+<line x1="1036.6" y1="381.2" x2="1036.6" y2="350.4" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
+<line x1="591.7" y1="384.6" x2="591.7" y2="349.6" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
+<line x1="714.6" y1="459.0" x2="714.6" y2="422.2" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
+<line x1="617.0" y1="485.5" x2="617.0" y2="447.9" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
+<line x1="585.7" y1="520.5" x2="585.7" y2="480.3" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
+<line x1="672.2" y1="577.7" x2="672.2" y2="546.1" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
+<line x1="961.0" y1="611.9" x2="961.0" y2="571.8" stroke="#a29e96" stroke-width="2" stroke-opacity="0.45" stroke-linecap="round"/>
+<circle cx="836.0" cy="281.2" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
+<circle cx="706.3" cy="282.9" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
+<circle cx="1018.5" cy="287.2" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
+<circle cx="819.8" cy="300.9" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
+<circle cx="706.9" cy="304.3" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
+<circle cx="850.2" cy="310.3" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
+<circle cx="654.2" cy="351.3" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
+<circle cx="289.0" cy="352.1" r="16" fill="#2a78d6" opacity="0.14"/>
+<circle cx="289.0" cy="352.1" r="7.5" fill="#2a78d6" stroke="#fbfbf9" stroke-width="2.5"/>
+<circle cx="1036.6" cy="365.0" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
+<circle cx="591.7" cy="366.7" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
+<circle cx="714.6" cy="441.0" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
+<circle cx="617.0" cy="465.8" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
+<circle cx="585.7" cy="500.8" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
+<circle cx="672.2" cy="562.4" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
+<circle cx="961.0" cy="592.3" r="6" fill="#a29e96" stroke="#fbfbf9" stroke-width="2"/>
+<text transform="translate(471.6 343.7) rotate(-0.1)" fill="#8a877f" font-size="13" text-anchor="middle">Pareto frontier</text>
+<line x1="828.8" y1="300.9" x2="861.8" y2="300.9" stroke="#8a877f" stroke-width="1" stroke-opacity="0.6" stroke-linecap="round"/>
+<line x1="843.5" y1="316.3" x2="839.2" y2="320.3" stroke="#8a877f" stroke-width="1" stroke-opacity="0.6" stroke-linecap="round"/>
+<line x1="697.9" y1="304.3" x2="682.9" y2="304.3" stroke="#8a877f" stroke-width="1" stroke-opacity="0.6" stroke-linecap="round"/>
+<text x="269.0" y="357.7" fill="#111111" font-size="16.0" text-anchor="end" font-weight="700">Electron 2.0</text>
+<text x="848.0" y="286.1" fill="#55534e" font-size="14.0" text-anchor="start" font-weight="400">GPT-6.1 Sol</text>
+<text x="863.8" y="305.8" fill="#55534e" font-size="14.0" text-anchor="start" font-weight="400">Claude Opus 5.5</text>
+<text x="837.2" y="333.2" fill="#55534e" font-size="14.0" text-anchor="end" font-weight="400">Claude Fable 5.1</text>
+<text x="694.3" y="287.8" fill="#55534e" font-size="14.0" text-anchor="end" font-weight="400">GPT-6.1 Terra</text>
+<text x="680.9" y="309.2" fill="#55534e" font-size="14.0" text-anchor="end" font-weight="400">Claude Sonnet 5.5</text>
+<text x="629.0" y="470.7" fill="#55534e" font-size="14.0" text-anchor="start" font-weight="400">GPT-4.1</text>
+<text x="597.7" y="505.7" fill="#55534e" font-size="14.0" text-anchor="start" font-weight="400">GPT-4.1 mini</text>
+<text x="1030.5" y="292.1" fill="#55534e" font-size="14.0" text-anchor="start" font-weight="400">GPT-5.6 Sol</text>
+<text x="666.2" y="356.2" fill="#55534e" font-size="14.0" text-anchor="start" font-weight="400">GPT-5.6 Terra</text>
+<text x="1024.6" y="369.9" fill="#55534e" font-size="14.0" text-anchor="end" font-weight="400">Gemini 3.8 Flash</text>
+<text x="579.7" y="371.6" fill="#55534e" font-size="14.0" text-anchor="end" font-weight="400">Claude Haiku 5.5</text>
+<text x="726.6" y="445.9" fill="#55534e" font-size="14.0" text-anchor="start" font-weight="400">GPT-5.6 Luna</text>
+<text x="684.2" y="567.3" fill="#55534e" font-size="14.0" text-anchor="start" font-weight="400">Gemini 3.5 Flash-Lite</text>
+<text x="973.0" y="597.2" fill="#55534e" font-size="14.0" text-anchor="start" font-weight="400">GPT-6 Luna</text>
+<text x="64.0" y="778.0" text-anchor="start"><tspan fill="#55534e" font-size="13.5" font-weight="700">Method.</tspan><tspan fill="#8a877f" font-size="13.5" font-weight="400" dx="5">Every model runs at its lowest reasoning setting. Latency comes from a separate test: the same recorded calls replayed against every model,</tspan></text>
+<text x="64.0" y="799.0" fill="#8a877f" font-size="13.5" text-anchor="start" font-weight="400">one request at a time, over its provider&#x27;s public API, from the cloud region nearest the provider (Mumbai or Virginia). It is the 90th percentile of time to</text>
+<text x="64.0" y="820.0" fill="#8a877f" font-size="13.5" text-anchor="start" font-weight="400">first token on warm turns, after the opening one: 9 turns in 10 start sooner. Vertical lines are 95% intervals of the MTVA Score. The frontier joins the</text>
+<text x="64.0" y="841.0" fill="#8a877f" font-size="13.5" text-anchor="start" font-weight="400">models no other model beats on both score and speed.</text>
+<text x="1136.0" y="841.0" fill="#111111" font-size="16" text-anchor="end" font-weight="700">smallest.ai</text>
 </svg>
