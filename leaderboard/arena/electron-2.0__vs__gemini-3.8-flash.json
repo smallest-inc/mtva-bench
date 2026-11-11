@@ -1,0 +1,112 @@
+{
+ "a": {
+  "run": "electron-2.0",
+  "label": "Electron 2.0",
+  "organization": "Smallest AI"
+ },
+ "b": {
+  "run": "gemini-3.8-flash",
+  "label": "Gemini 3.8 Flash",
+  "organization": "Google"
+ },
+ "benchmark_version": "1.0.0",
+ "coverage": {
+  "planned": 600,
+  "judged": 600,
+  "missing": {}
+ },
+ "scores": {
+  "calls": 600,
+  "wins": {
+   "value": 83.0,
+   "ci": [
+    78.2,
+    87.3
+   ]
+  },
+  "ties": {
+   "value": 0.0,
+   "ci": [
+    0.0,
+    0.0
+   ]
+  },
+  "losses": {
+   "value": 17.0,
+   "ci": [
+    12.7,
+    21.8
+   ]
+  },
+  "by_language": {
+   "Bengali": {
+    "calls": 36,
+    "wins": 69.4,
+    "ties": 0.0,
+    "losses": 30.6
+   },
+   "English": {
+    "calls": 180,
+    "wins": 90.6,
+    "ties": 0.0,
+    "losses": 9.4
+   },
+   "French": {
+    "calls": 42,
+    "wins": 76.2,
+    "ties": 0.0,
+    "losses": 23.8
+   },
+   "Gujarati": {
+    "calls": 42,
+    "wins": 92.9,
+    "ties": 0.0,
+    "losses": 7.1
+   },
+   "Hindi": {
+    "calls": 84,
+    "wins": 83.3,
+    "ties": 0.0,
+    "losses": 16.7
+   },
+   "Kannada": {
+    "calls": 36,
+    "wins": 66.7,
+    "ties": 0.0,
+    "losses": 33.3
+   },
+   "Marathi": {
+    "calls": 42,
+    "wins": 81.0,
+    "ties": 0.0,
+    "losses": 19.0
+   },
+   "Spanish": {
+    "calls": 54,
+    "wins": 87.0,
+    "ties": 0.0,
+    "losses": 13.0
+   },
+   "Tamil": {
+    "calls": 42,
+    "wins": 69.0,
+    "ties": 0.0,
+    "losses": 31.0
+   },
+   "Telugu": {
+    "calls": 42,
+    "wins": 83.3,
+    "ties": 0.0,
+    "losses": 16.7
+   }
+  },
+  "first_shown_won": 55.3
+ },
+ "provenance": {
+  "judge_model": "claude-opus-5-5",
+  "judge_hash": "8c5382e25481eeb7cbae28998cf9e068e6f4b672e7894d90c0a78e7de74aba04",
+  "prompt_hash": "c1ad1db39ab32dc3b7bfc8464da3eeed8ead1e1e0ea2002d3165abbec5f7b0c6",
+  "version": "1",
+  "seed": 0
+ }
+}
