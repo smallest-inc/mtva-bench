@@ -1,0 +1,7 @@
+{
+ "model": "claude-haiku-5-5",
+ "model_hash": "d4bb64ad5f749cae404c0f9b375c5cbfed4749a984811824d89d45db256251f1",
+ "priced": "2026-11-12",
+ "calls": 600,
+ "usd_per_call": 0.00405
+}

@@ -1,0 +1,7 @@
+{
+ "model": "claude-fable-5-1",
+ "model_hash": "386edb6f65db51668ffa5cf8483d7af741e331cf2699321da57e1e7e10af89b1",
+ "priced": "2026-11-12",
+ "calls": 600,
+ "usd_per_call": 0.24986
+}

@@ -16,6 +16,7 @@ from itertools import pairwise
 
 from mtva_bench.leaderboard.build import Entry
 from mtva_bench.run.arena import ArenaSummary
+from mtva_bench.scoring.index import FIRST_TOKEN_MS, USD_PER_CALL, WEIGHTS, mtva_index
 from mtva_bench.scoring.latency import Speed
 
 HIGHLIGHT = "Smallest AI"
@@ -520,6 +521,90 @@ def latency_note(entries: Sequence[Entry]) -> str:
     )
 
 
+# --- the MTVA Index --------------------------------------------------------------------------
+
+
+def cost_label(usd: float) -> str:
+    return f"${usd:.2f}" if 0.01 <= usd < 1 else f"${usd:g}"
+
+
+def index_chart(entries: Sequence[Entry]) -> str | None:
+    """Models ranked on the MTVA Index, each beside the three measures it is made from. Drawn
+    only when every model's calls are priced."""
+    costs = {entry.summary.run: entry.cost for entry in entries if entry.cost is not None}
+    if len(costs) < len(entries):
+        return None
+
+    def usd(entry: Entry) -> float:
+        return costs[entry.summary.run].usd_per_call
+
+    def index(entry: Entry, score: float) -> float:
+        return mtva_index(score, response_ms(entry), usd(entry))
+
+    ranked = sorted(entries, key=lambda e: (-index(e, e.scores.mtva_score.value), e.label))
+    card = Card(
+        "MTVA-Bench · quality, speed and cost",
+        "The MTVA Index",
+        "Call quality, speed and cost in one number, 0 to 100. A model needs all three to "
+        "rank high.",
+        "Each model's MTVA Index, with its MTVA Score, time to first token and cost per call.",
+    )
+    row, thickness = 36, 20
+    top = card.y + 34
+    label_width = max(text_width(entry.label, 15, True) for entry in ranked)
+    x0 = MARGIN + label_width + 24
+    cost_x = WIDTH - MARGIN
+    token_x = cost_x - 128
+    score_x = token_x - 120
+    x1 = score_x - 150
+    bottom = top + row * len(ranked)
+
+    def x_at(value: float) -> float:
+        return x0 + value / 100 * (x1 - x0)
+
+    headers = ((score_x, "MTVA SCORE"), (token_x, "FIRST TOKEN"), (cost_x, "COST PER CALL"))
+    for column, title in headers:
+        card.text(column, top - 20, title, MUTED, 11.5, anchor="end", weight=600, spacing=1.1)
+    for tick in (0, 25, 50, 75, 100):
+        x = x_at(tick)
+        card.line(x, top - 6, x, bottom + 4, GRID)
+        card.text(x, bottom + 26, str(tick), MUTED, 13, anchor="middle", numeric=True)
+    for position, entry in enumerate(ranked):
+        center = top + row * position + row / 2
+        bold = highlighted(entry)
+        ink, weight = (INK, 700) if bold else (SECONDARY, 400)
+        if bold:
+            card.rect(
+                MARGIN - 12, center - row / 2 + 2, WIDTH - 2 * MARGIN + 24, row - 4, ACCENT_SOFT, 8
+            )
+        value = index(entry, entry.scores.mtva_score.value)
+        low, high = (index(entry, end) for end in entry.scores.mtva_score.ci)
+        card.bar(x0, x_at(value), center, thickness, ACCENT if bold else BAR)
+        card.line(x_at(low), center, x_at(high), center, INK, width=1.5, opacity=0.45)
+        card.text(MARGIN + label_width, center + 5, entry.label, ink, 15, "end", weight)
+        card.text(x_at(high) + 10, center + 5, f"{value:.1f}", ink, 15, weight=weight, numeric=True)
+        cells = (
+            (score_x, f"{entry.scores.mtva_score.value:.1f}"),
+            (token_x, f"{response_ms(entry):,} ms"),
+            (cost_x, f"${usd(entry):.4f}"),
+        )
+        for column, text in cells:
+            card.text(column, center + 5, text, ink, 15, "end", weight, numeric=True)
+    card.line(x0, top - 6, x0, bottom + 4, AXIS)
+    card.y = bottom + 36
+    quality, speed, cost = (f"{WEIGHTS[name]:.0%}" for name in ("quality", "speed", "cost"))
+    fast, slow = (latency_label(ms) for ms in FIRST_TOKEN_MS)
+    cheap, dear = (cost_label(usd) for usd in USD_PER_CALL)
+    return card.render(
+        "The MTVA Index is a weighted geometric mean of three parts, each from 0 to 100: the "
+        f"MTVA Score ({quality}), speed ({speed}) and cost ({cost}). Speed is time to first "
+        f"token at the 90th percentile, on a log scale from {fast} (100) to {slow} (0). Cost is "
+        f"the cost of one call, on a log scale from {cheap} (100) to {dear} (0). In a geometric "
+        "mean a strong part cannot make up for a poor one. Lines are 95% intervals, carried "
+        "over from the MTVA Score."
+    )
+
+
 # --- time to first sentence -----------------------------------------------------------------
 
 
@@ -879,6 +964,7 @@ def charts(entries: Sequence[Entry], pairs: Sequence[ArenaSummary]) -> dict[str,
     """Every chart, by file name."""
     drawn: dict[str, str | None] = {
         "score-vs-latency.svg": score_vs_latency(entries),
+        "mtva-index.svg": index_chart(entries),
         "first-sentence.svg": first_sentence(entries),
     }
     for index, (key, (name, question, method)) in enumerate(CAPABILITIES.items(), start=1):

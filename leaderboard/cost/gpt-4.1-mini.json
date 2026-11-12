@@ -1,0 +1,7 @@
+{
+ "model": "gpt-4.1-mini",
+ "model_hash": "bc94b1663031d9405006402787e75d0f454b018affba98c307a034427f686098",
+ "priced": "2026-11-12",
+ "calls": 600,
+ "usd_per_call": 0.01572
+}

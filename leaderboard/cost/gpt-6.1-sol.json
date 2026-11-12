@@ -1,0 +1,7 @@
+{
+ "model": "gpt-6.1-sol",
+ "model_hash": "ae85e351254329b7917f8c5c9a66fff1b1f43e74b12c871789995adbc4a44cb9",
+ "priced": "2026-11-12",
+ "calls": 600,
+ "usd_per_call": 0.02748
+}
