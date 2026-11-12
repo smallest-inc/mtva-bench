@@ -55,6 +55,7 @@ from mtva_bench.run.arena import (
     save_arena_summary,
     summarize_arena,
 )
+from mtva_bench.run.cost import cost_stage, load_prices
 from mtva_bench.run.evaluate import EvaluateResult
 from mtva_bench.run.latency import LatencyResult, check_scored, latency_stage
 from mtva_bench.run.score import Summary, publish_problems, run_config, score_stage, summarize
@@ -755,6 +756,64 @@ def leaderboard_command(
         f"{len(stale)} of {len(outputs)} files updated",
         highlight=False,
     )
+
+
+@cli.command(short_help="Price a run's calls from a price file.")
+@click.argument(
+    "run_dirs",
+    metavar="RUN...",
+    nargs=-1,
+    required=True,
+    type=click.Path(path_type=Path, file_okay=False, exists=True),
+)
+@data_option
+@benchmark_option
+@click.option(
+    "--prices",
+    "prices_path",
+    type=click.Path(path_type=Path, dir_okay=False, exists=True),
+    required=True,
+    help="Price file: US dollars per million tokens for each run. Not part of the benchmark.",
+)
+@click.option("--publish", is_flag=True, help="Also copy each result to leaderboard/cost/.")
+def cost(
+    run_dirs: tuple[Path, ...],
+    data_dir: Path | None,
+    benchmark_path: Path,
+    prices_path: Path,
+    publish: bool,
+) -> None:
+    """The mean cost of a scored call for each RUN: the tokens its model used, at the prices in
+    the price file, with input read from or written to the provider's cache at those rates.
+    Calls no model.
+
+    \b
+    Example:
+      mtva-bench cost runs/gpt-6.1-sol runs/electron-2.0 --prices prices.yaml --publish
+    """
+    try:
+        benchmark = load_benchmark(benchmark_path)
+        bundle = open_bundle(data_dir, benchmark_path)
+        verify(bundle, benchmark.data)
+        prices = load_prices(prices_path)
+        results = [
+            cost_stage(run_config(run_dir, benchmark), bundle, prices) for run_dir in run_dirs
+        ]
+    except (ConfigError, DataError) as error:
+        raise click.ClickException(str(error)) from error
+    table = Table("model", "calls", "cost per call", title=f"Priced {prices.priced}")
+    for column in table.columns[1:]:
+        column.justify = "right"
+    for result in sorted(results, key=lambda r: r.usd_per_call):
+        table.add_row(result.model, str(result.calls), f"${result.usd_per_call:.4f}")
+    console.print(table)
+    if publish:
+        target = Path("leaderboard/cost")
+        target.mkdir(parents=True, exist_ok=True)
+        for result in results:
+            path = target / f"{result.model}.json"
+            path.write_text(result.model_dump_json(indent=1) + "\n", encoding="utf-8")
+        console.print(f"[green]✓[/green] {len(results)} results in {target}", highlight=False)
 
 
 @cli.command(short_help="Judge which of two runs sounds more human.")

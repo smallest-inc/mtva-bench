@@ -13,9 +13,11 @@ from pydantic import ValidationError
 
 from mtva_bench.config import Benchmark
 from mtva_bench.run.arena import ArenaSummary, shared_inputs_for
+from mtva_bench.run.cost import CostResult
 from mtva_bench.run.latency import LatencyResult
 from mtva_bench.run.score import Summary, protocol, publish_problems
 from mtva_bench.scoring.aggregate import Scores
+from mtva_bench.scoring.index import mtva_index
 from mtva_bench.scoring.latency import Latency, Speed
 
 
@@ -26,12 +28,14 @@ class LeaderboardError(ValueError):
 @dataclass(frozen=True)
 class Entry:
     """A published run with the scores and latency the leaderboard needs. `region` names where
-    the latency test ran; None when the latency comes from the benchmark run itself."""
+    the latency test ran; None when the latency comes from the benchmark run itself. `cost` is
+    None until the run's calls are priced."""
 
     summary: Summary
     scores: Scores
     latency: Latency | Speed
     region: str | None = None
+    cost: CostResult | None = None
 
     @property
     def label(self) -> str:
@@ -47,6 +51,15 @@ class Entry:
     def reasoning(self) -> str:
         display = self.summary.model.get("display")
         return display["reasoning"] if display else ""
+
+    @property
+    def index(self) -> float | None:
+        """The MTVA Index; None until the run's calls are priced."""
+        if self.cost is None:
+            return None
+        return mtva_index(
+            self.scores.mtva_score.value, self.latency.ttft_warm_p90, self.cost.usd_per_call
+        )
 
 
 def problems(summary: Summary, benchmark: Benchmark) -> list[str]:
@@ -85,6 +98,7 @@ def load_entries(runs_dir: Path, benchmark: Benchmark) -> list[Entry]:
     if not entries:
         raise LeaderboardError(f"no published runs in {runs_dir}")
     entries = with_latency_test(entries, runs_dir.parent / "latency")
+    entries = with_cost(entries, runs_dir.parent / "cost")
     return sorted(entries, key=lambda entry: -entry.scores.mtva_score.value)
 
 
@@ -113,6 +127,29 @@ def with_latency_test(entries: list[Entry], latency_dir: Path) -> list[Entry]:
         )
         for entry in entries
     ]
+
+
+def with_cost(entries: list[Entry], cost_dir: Path) -> list[Entry]:
+    """The entries with their cost per call, once costs are published. Every model then needs
+    one, priced on the same day from the calls of the spec it was scored with."""
+    priced = {
+        path.stem: CostResult.model_validate_json(path.read_text(encoding="utf-8"))
+        for path in sorted(cost_dir.glob("*.json"))
+    }
+    if not priced:
+        return entries
+    refused = []
+    for entry in entries:
+        result = priced.get(entry.summary.run)
+        if result is None:
+            refused.append(f"{entry.summary.run}: no cost")
+        elif result.model_hash != entry.summary.provenance.model_hash:
+            refused.append(f"{entry.summary.run}: priced with another model spec")
+    if len({result.priced for result in priced.values()}) > 1:
+        refused.append("costs were priced on different days")
+    if refused:
+        raise LeaderboardError("cost refused:\n  " + "\n  ".join(refused))
+    return [replace(entry, cost=priced[entry.summary.run]) for entry in entries]
 
 
 def load_arena(arena_dir: Path, benchmark: Benchmark) -> list[ArenaSummary]:
@@ -154,6 +191,7 @@ def leaderboard_json(entries: list[Entry], pairs: list[ArenaSummary], benchmark:
             "benchmark_version": benchmark.version,
             "bundle_version": benchmark.data.version,
             "runs": [entry.summary.model_dump(mode="json") for entry in entries],
+            "cost": [entry.cost.model_dump(mode="json") for entry in entries if entry.cost],
             "arena": [pair.model_dump(mode="json") for pair in pairs],
         },
         indent=1,

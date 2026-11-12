@@ -1,0 +1,7 @@
+{
+ "model": "gemini-3.5-flash-lite",
+ "model_hash": "cac752c4f43a5bbbf49972e91178fff8ace398b02c09f7e240a2cb27a36c7d01",
+ "priced": "2026-11-12",
+ "calls": 600,
+ "usd_per_call": 0.01612
+}

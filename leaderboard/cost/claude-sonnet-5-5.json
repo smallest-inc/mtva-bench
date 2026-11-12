@@ -1,0 +1,7 @@
+{
+ "model": "claude-sonnet-5-5",
+ "model_hash": "771a6629e3fd3d70db83ee297ef018f6413ef625abed189978561c6ca17b6858",
+ "priced": "2026-11-12",
+ "calls": 600,
+ "usd_per_call": 0.06175
+}

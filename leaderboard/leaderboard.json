@@ -8647,6 +8647,113 @@
    }
   }
  ],
+ "cost": [
+  {
+   "model": "gpt-6.1-sol",
+   "model_hash": "ae85e351254329b7917f8c5c9a66fff1b1f43e74b12c871789995adbc4a44cb9",
+   "priced": "2026-11-12",
+   "calls": 600,
+   "usd_per_call": 0.02748
+  },
+  {
+   "model": "gpt-6.1-terra",
+   "model_hash": "a532641e99bd5dcd45a881fe1512d5d85f2bd33add60964eb8ff4a5c4ee7517b",
+   "priced": "2026-11-12",
+   "calls": 600,
+   "usd_per_call": 0.01446
+  },
+  {
+   "model": "gpt-5.6-sol",
+   "model_hash": "c2c45ae4a681dff1cefbb054853196d607a6162e87e6f57f297d99056177d844",
+   "priced": "2026-11-12",
+   "calls": 600,
+   "usd_per_call": 0.08155
+  },
+  {
+   "model": "claude-opus-5-5",
+   "model_hash": "5bf911849ac0aaf8667e44f6f9b03ed5e0777efe9f49d2cc5de7c308ad45903b",
+   "priced": "2026-11-12",
+   "calls": 600,
+   "usd_per_call": 0.12086
+  },
+  {
+   "model": "claude-sonnet-5-5",
+   "model_hash": "771a6629e3fd3d70db83ee297ef018f6413ef625abed189978561c6ca17b6858",
+   "priced": "2026-11-12",
+   "calls": 600,
+   "usd_per_call": 0.06175
+  },
+  {
+   "model": "claude-fable-5-1",
+   "model_hash": "386edb6f65db51668ffa5cf8483d7af741e331cf2699321da57e1e7e10af89b1",
+   "priced": "2026-11-12",
+   "calls": 600,
+   "usd_per_call": 0.24986
+  },
+  {
+   "model": "gpt-5.6-terra",
+   "model_hash": "c9f07d52908966b063ed856796a2d8cb05c664f56cf31064c5c221dad03e3856",
+   "priced": "2026-11-12",
+   "calls": 600,
+   "usd_per_call": 0.03875
+  },
+  {
+   "model": "electron-2.0",
+   "model_hash": "01a41912c7d989ea257063beadd0b88d01102889eec6aaf4a1bd3298235b2d87",
+   "priced": "2026-11-12",
+   "calls": 600,
+   "usd_per_call": 0.01832
+  },
+  {
+   "model": "gemini-3.8-flash",
+   "model_hash": "266db5fbbbffaf5e0e3c3bc863bde08c6263078a33ea197971183c45af88bf6a",
+   "priced": "2026-11-12",
+   "calls": 600,
+   "usd_per_call": 0.03473
+  },
+  {
+   "model": "claude-haiku-5-5",
+   "model_hash": "d4bb64ad5f749cae404c0f9b375c5cbfed4749a984811824d89d45db256251f1",
+   "priced": "2026-11-12",
+   "calls": 600,
+   "usd_per_call": 0.00405
+  },
+  {
+   "model": "gpt-5.6-luna",
+   "model_hash": "749f7561443904e804a1276680cd68f8152de16abac46bd83f0041591d790956",
+   "priced": "2026-11-12",
+   "calls": 600,
+   "usd_per_call": 0.00395
+  },
+  {
+   "model": "gpt-4.1",
+   "model_hash": "6a826160fb34770671cb3512958f49d2d17c5b1100b14fd0e28db879783085db",
+   "priced": "2026-11-12",
+   "calls": 600,
+   "usd_per_call": 0.08352
+  },
+  {
+   "model": "gpt-4.1-mini",
+   "model_hash": "bc94b1663031d9405006402787e75d0f454b018affba98c307a034427f686098",
+   "priced": "2026-11-12",
+   "calls": 600,
+   "usd_per_call": 0.01572
+  },
+  {
+   "model": "gemini-3.5-flash-lite",
+   "model_hash": "cac752c4f43a5bbbf49972e91178fff8ace398b02c09f7e240a2cb27a36c7d01",
+   "priced": "2026-11-12",
+   "calls": 600,
+   "usd_per_call": 0.01612
+  },
+  {
+   "model": "gpt-6-luna",
+   "model_hash": "26bcd4fdac4cecf353df532924e95917e5a1fa13621521ca840433bf2f871f16",
+   "priced": "2026-11-12",
+   "calls": 600,
+   "usd_per_call": 0.00116
+  }
+ ],
  "arena": [
   {
    "a": {

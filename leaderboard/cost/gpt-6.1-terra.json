@@ -1,0 +1,7 @@
+{
+ "model": "gpt-6.1-terra",
+ "model_hash": "a532641e99bd5dcd45a881fe1512d5d85f2bd33add60964eb8ff4a5c4ee7517b",
+ "priced": "2026-11-12",
+ "calls": 600,
+ "usd_per_call": 0.01446
+}

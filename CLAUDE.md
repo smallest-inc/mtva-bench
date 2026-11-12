@@ -19,6 +19,7 @@ uv run mtva-bench run models/<name>.yaml [--limit N] [--dry-run] [--discard-stal
 uv run mtva-bench report runs/<a> [runs/<b> ...] [--by language] [--worst N]
 uv run mtva-bench arena runs/<a> runs/<b> [--batch] [--publish]
 uv run mtva-bench publish runs/<name>      # its summary into leaderboard/runs/
+uv run mtva-bench cost runs/<name> --prices prices.yaml [--publish]   # cost per call, from a price file
 uv run mtva-bench leaderboard [--check]    # leaderboard.json, charts and README's marked parts
 ```
 

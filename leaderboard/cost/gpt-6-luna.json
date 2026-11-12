@@ -1,0 +1,7 @@
+{
+ "model": "gpt-6-luna",
+ "model_hash": "26bcd4fdac4cecf353df532924e95917e5a1fa13621521ca840433bf2f871f16",
+ "priced": "2026-11-12",
+ "calls": 600,
+ "usd_per_call": 0.00116
+}
